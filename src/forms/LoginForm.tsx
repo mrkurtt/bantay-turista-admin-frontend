@@ -4,7 +4,7 @@ import React from 'react';
 
 const LoginForm = () => {
 	return (
-		<div className="bg-white w-[500px] p-8 rounded-md">
+		<div className="bg-white w-[500px] p-4 rounded-md">
 			<h1 className="text-center text-primary font-bold text-2xl">LOGIN</h1>
 			<div className="flex flex-col my-8">
 				<Input
@@ -15,12 +15,6 @@ const LoginForm = () => {
 				<Input label="Password" placeholder="Enter your password" />
 			</div>
 			<GradientBtn label="Login" fullWidth={true} />
-			{/* <Button
-				className={`bg-gradient-to-r from-primary to-secondary text-white`}
-				fullWidth
-			>
-				Login
-			</Button> */}
 		</div>
 	);
 };
