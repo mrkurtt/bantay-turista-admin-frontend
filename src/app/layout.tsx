@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Poppins } from 'next/font/google';
 import './globals.css';
 import { Providers } from './providers';
+import Nav from '@/components/Nav';
 
 const poppins = Poppins({
 	weight: [
@@ -44,8 +45,11 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" className="light">
-			<body className={poppins.className}>
-				<Providers>{children}</Providers>
+			<body className={`${poppins.className}`}>
+				<Providers>
+					<Nav />
+					{children}
+				</Providers>
 			</body>
 		</html>
 	);
