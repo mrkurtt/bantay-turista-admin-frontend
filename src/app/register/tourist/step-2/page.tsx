@@ -6,7 +6,7 @@ import FormStepper from '@/components/Stepper/FormStepper';
 import { Button, Link } from '@nextui-org/react';
 import React from 'react';
 
-const RegisterTourist = () => {
+const Step2 = () => {
 	const nextStep = '/register/tourist/step-3';
 	const prevStep = '/register/tourist/step-1';
 
@@ -65,4 +65,4 @@ const RegisterTourist = () => {
 	);
 };
 
-export default RegisterTourist;
+export default Step2;

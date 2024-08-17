@@ -7,7 +7,7 @@ import { Button, Input, Link } from '@nextui-org/react';
 import React from 'react';
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 
-const RegisterTourist = () => {
+const Step3 = () => {
 	const [isVisible, setIsVisible] = React.useState(false);
 	const toggleVisibility = () => setIsVisible(!isVisible);
 
@@ -112,28 +112,18 @@ const RegisterTourist = () => {
 						/>
 					</div>
 				</div>
-				<div className="my-8">
-					<p className="font-semibold mb-2">PHOTO</p>
-					<div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
-						<Input variant="bordered" label="Country" />
-						<Input variant="bordered" label="Province" />
-						<Input variant="bordered" label="City/Municipality" />
-					</div>
-				</div>
 
 				<div className="w-full flex justify-between">
-					{/* <Link href={nextStep}> */}
 					<Link href={prevStep}>
 						<Button variant="flat">Back</Button>
 					</Link>
 					<Button variant="flat" className="bg-green-700 text-white">
 						Submit
 					</Button>
-					{/* </Link> */}
 				</div>
 			</FormContainer>
 		</Container>
 	);
 };
 
-export default RegisterTourist;
+export default Step3;
