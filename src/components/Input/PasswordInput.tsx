@@ -35,6 +35,7 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
 		<Input
 			label={label}
 			placeholder={placeholder}
+			radius="sm"
 			variant={'bordered'}
 			endContent={
 				<button
@@ -44,9 +45,9 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
 					aria-label="toggle password visibility"
 				>
 					{isVisible ? (
-						<IoMdEye className="text-primary" size={25} />
+						<IoMdEye className="text-primary" size={20} />
 					) : (
-						<IoMdEyeOff className="text-primary" size={25} />
+						<IoMdEyeOff className="text-primary" size={20} />
 					)}
 				</button>
 			}
