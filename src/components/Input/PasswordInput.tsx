@@ -5,15 +5,16 @@ import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 interface PasswordInputProps {
 	label?: string;
 	placeholder?: string;
+	isReadOnly?: boolean;
 	variant?: 'bordered' | 'filled' | 'underlined';
-	value?: string; // Optional value to support controlled components
-	onChange?: (value: string) => void; // Callback for handling changes
+	value?: string;
+	onChange?: (value: string) => void;
 }
 
 const PasswordInput: React.FC<PasswordInputProps> = ({
 	label = 'Password',
 	placeholder = 'Enter your password',
-	variant = 'bordered',
+	isReadOnly = false,
 	value,
 	onChange,
 }) => {
@@ -35,6 +36,7 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
 		<Input
 			label={label}
 			placeholder={placeholder}
+			isReadOnly={isReadOnly}
 			radius="sm"
 			variant={'bordered'}
 			endContent={

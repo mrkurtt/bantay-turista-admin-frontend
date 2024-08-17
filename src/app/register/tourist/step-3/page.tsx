@@ -9,12 +9,15 @@ import { Button, Input, Link } from '@nextui-org/react';
 import React, { useState } from 'react';
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 import PlainBtn from '@/components/Button/PlainBtn';
+import TextInput from '@/components/Input/TextInput';
+import Image from 'next/image';
+import Mikha from '../../../../../public/mikha.jpg';
 
 const Step3 = () => {
 	const [isVisible, setIsVisible] = useState(false);
 	const toggleVisibility = () => setIsVisible(!isVisible);
-	const [password, setPassword] = useState<string>('');
-	const [confirmPassword, setConfirmPassword] = useState<string>('');
+	const [password, setPassword] = useState<string>('sdgdfgdfg');
+	const [confirmPassword, setConfirmPassword] = useState<string>('fghdghdf');
 
 	const handlePasswordChange = (newPassword: string) => {
 		setPassword(newPassword);
@@ -48,50 +51,66 @@ const Step3 = () => {
 		<Container>
 			<div className="mb-4">
 				<h1 className="font-bold text-xl">Create an Account</h1>
-				<p>Please provide proper information below. </p>
+				<p>Please check if all necessary information are correct.</p>
 			</div>
 			<FormContainer>
 				<FormStepper steps={steps} currentStepIndex={2} />
-				<p>Please verify and confirm all the information you have provided.</p>
+
+				<div className="mt-6 w-full flex justify-center items-center">
+					<div className="h-56 w-56 overflow-hidden rounded-md">
+						<Image src={Mikha} alt="Sample Profile" />
+					</div>
+				</div>
+
 				<div className="my-8">
 					<p className="font-semibold mb-2">BASIC INFORMATION</p>
 					<div className="grid grid-cols-1  lg:grid-cols-2 gap-2">
-						<Input radius="sm" variant="bordered" label="First Name" />
-						<Input radius="sm" variant="bordered" label="Last Name" />
+						<TextInput value="ksldjfj" isReadOnly={true} label="First Name" />
+						<TextInput value="ksldjfj" isReadOnly={true} label="Last Name" />
 					</div>
 				</div>
 				<div className="my-8">
 					<p className="font-semibold mb-2">
-						DATE OF BIRTH
+						DATE OF BIRTH &nbsp;
 						<span className="text-gray-600 font-light text-sm">MM/DD/YYYY</span>
 					</p>
 					<div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
-						<Input radius="sm" variant="bordered" label="Month" />
-						<Input radius="sm" variant="bordered" label="Day" />
-						<Input radius="sm" variant="bordered" label="Year" />
+						<TextInput value="ksldjfj" isReadOnly={true} label="Month" />
+						<TextInput value="ksldjfj" isReadOnly={true} label="Day" />
+						<TextInput value="ksldjfj" isReadOnly={true} label="Year" />
 					</div>
 				</div>
 				<div className="my-8">
 					<p className="font-semibold mb-2">PERMANENT ADDRESS</p>
 					<div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
-						<Input radius="sm" variant="bordered" label="Country" />
-						<Input radius="sm" variant="bordered" label="Province" />
-						<Input radius="sm" variant="bordered" label="City/Municipality" />
+						<TextInput value="ksldjfj" isReadOnly={true} label="Country" />
+						<TextInput value="ksldjfj" isReadOnly={true} label="Province" />
+						<TextInput
+							value="ksldjfj"
+							isReadOnly={true}
+							label="City/Municipality"
+						/>
 					</div>
 				</div>
 				<div className="my-8">
 					<p className="font-semibold mb-2">ACCOUNT DETAILS</p>
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-						<Input radius="sm" variant="bordered" label="Username" />
-						<Input radius="sm" variant="bordered" label="Email Address" />
+						<TextInput value="ksldjfj" isReadOnly={true} label="Username" />
+						<TextInput
+							value="ksldjfj"
+							isReadOnly={true}
+							label="Email Address"
+						/>
 						<PasswordInput
 							label="Password"
+							isReadOnly={true}
 							placeholder="Enter your password"
 							value={password}
 							onChange={handlePasswordChange}
 						/>
 						<PasswordInput
 							label="Confirm Password"
+							isReadOnly={true}
 							placeholder="Re-type your password"
 							value={confirmPassword}
 							onChange={handleConfirmPasswordChange}
