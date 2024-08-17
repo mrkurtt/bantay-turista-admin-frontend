@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Poppins } from 'next/font/google';
 import './globals.css';
 import { Providers } from './providers';
-import Nav from '@/components/Nav';
+import Nav from '@/components/Navbar/Nav';
 
 const poppins = Poppins({
 	weight: [

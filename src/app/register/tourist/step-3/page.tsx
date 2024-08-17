@@ -2,14 +2,27 @@
 
 import FormContainer from '@/components/Container/FormContainer';
 import Container from '@/components/Container/LayoutContainer';
+import GradientBtn from '@/components/Button/GradientBtn';
+import PasswordInput from '@/components/Input/PasswordInput';
 import FormStepper from '@/components/Stepper/FormStepper';
 import { Button, Input, Link } from '@nextui-org/react';
-import React from 'react';
+import React, { useState } from 'react';
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
+import PlainBtn from '@/components/Button/PlainBtn';
 
 const Step3 = () => {
-	const [isVisible, setIsVisible] = React.useState(false);
+	const [isVisible, setIsVisible] = useState(false);
 	const toggleVisibility = () => setIsVisible(!isVisible);
+	const [password, setPassword] = useState<string>('');
+	const [confirmPassword, setConfirmPassword] = useState<string>('');
+
+	const handlePasswordChange = (newPassword: string) => {
+		setPassword(newPassword);
+	};
+
+	const handleConfirmPasswordChange = (confirmPassword: string) => {
+		setConfirmPassword(confirmPassword);
+	};
 
 	const prevStep = '/register/tourist/step-2';
 
@@ -39,11 +52,12 @@ const Step3 = () => {
 			</div>
 			<FormContainer>
 				<FormStepper steps={steps} currentStepIndex={2} />
+				<p>Please verify and confirm all the information you have provided.</p>
 				<div className="my-8">
 					<p className="font-semibold mb-2">BASIC INFORMATION</p>
 					<div className="grid grid-cols-1  lg:grid-cols-2 gap-2">
-						<Input variant="bordered" label="First Name" />
-						<Input variant="bordered" label="Last Name" />
+						<Input radius="sm" variant="bordered" label="First Name" />
+						<Input radius="sm" variant="bordered" label="Last Name" />
 					</div>
 				</div>
 				<div className="my-8">
@@ -52,74 +66,44 @@ const Step3 = () => {
 						<span className="text-gray-600 font-light text-sm">MM/DD/YYYY</span>
 					</p>
 					<div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
-						<Input variant="bordered" label="Month" />
-						<Input variant="bordered" label="Day" />
-						<Input variant="bordered" label="Year" />
+						<Input radius="sm" variant="bordered" label="Month" />
+						<Input radius="sm" variant="bordered" label="Day" />
+						<Input radius="sm" variant="bordered" label="Year" />
 					</div>
 				</div>
 				<div className="my-8">
 					<p className="font-semibold mb-2">PERMANENT ADDRESS</p>
 					<div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
-						<Input variant="bordered" label="Country" />
-						<Input variant="bordered" label="Province" />
-						<Input variant="bordered" label="City/Municipality" />
+						<Input radius="sm" variant="bordered" label="Country" />
+						<Input radius="sm" variant="bordered" label="Province" />
+						<Input radius="sm" variant="bordered" label="City/Municipality" />
 					</div>
 				</div>
 				<div className="my-8">
 					<p className="font-semibold mb-2">ACCOUNT DETAILS</p>
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-						<Input variant="bordered" label="Username" />
-						<Input variant="bordered" label="Email Address" />
-						<Input
+						<Input radius="sm" variant="bordered" label="Username" />
+						<Input radius="sm" variant="bordered" label="Email Address" />
+						<PasswordInput
 							label="Password"
 							placeholder="Enter your password"
-							variant="bordered"
-							endContent={
-								<button
-									className="focus:outline-none"
-									type="button"
-									onClick={toggleVisibility}
-									aria-label="toggle password visibility"
-								>
-									{isVisible ? (
-										<IoMdEye className="text-primary" size={25} />
-									) : (
-										<IoMdEyeOff className="text-primary" size={25} />
-									)}
-								</button>
-							}
-							type={isVisible ? 'text' : 'password'}
+							value={password}
+							onChange={handlePasswordChange}
 						/>
-						<Input
+						<PasswordInput
 							label="Confirm Password"
 							placeholder="Re-type your password"
-							variant="bordered"
-							endContent={
-								<button
-									className="focus:outline-none"
-									type="button"
-									onClick={toggleVisibility}
-									aria-label="toggle password visibility"
-								>
-									{isVisible ? (
-										<IoMdEye className="text-primary" size={25} />
-									) : (
-										<IoMdEyeOff className="text-primary" size={25} />
-									)}
-								</button>
-							}
-							type={isVisible ? 'text' : 'password'}
+							value={confirmPassword}
+							onChange={handleConfirmPasswordChange}
 						/>
 					</div>
 				</div>
 
 				<div className="w-full flex justify-between">
 					<Link href={prevStep}>
-						<Button variant="flat">Back</Button>
+						<PlainBtn label="Back" />
 					</Link>
-					<Button variant="flat" className="bg-green-700 text-white">
-						Submit
-					</Button>
+					<GradientBtn label="Submit" fullWidth={false} />
 				</div>
 			</FormContainer>
 		</Container>

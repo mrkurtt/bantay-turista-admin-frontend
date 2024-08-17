@@ -1,6 +1,6 @@
 'use client';
 
-import GradientBtn from '@/components/GradientBtn';
+import GradientBtn from '@/components/Button/GradientBtn';
 import { Input } from '@nextui-org/react';
 import Link from 'next/link';
 import React from 'react';

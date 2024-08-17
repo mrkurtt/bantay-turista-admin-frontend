@@ -2,9 +2,11 @@
 
 import FormContainer from '@/components/Container/FormContainer';
 import Container from '@/components/Container/LayoutContainer';
+import GradientBtn from '@/components/Button/GradientBtn';
 import FormStepper from '@/components/Stepper/FormStepper';
 import { Button, Link } from '@nextui-org/react';
 import React from 'react';
+import PlainBtn from '@/components/Button/PlainBtn';
 
 const Step2 = () => {
 	const nextStep = '/register/tourist/step-3';
@@ -52,12 +54,10 @@ const Step2 = () => {
 
 				<div className="flex justify-between">
 					<Link href={prevStep}>
-						<Button variant="flat">Back</Button>
+						<PlainBtn label="Back" fullWidth={false} />
 					</Link>
 					<Link href={nextStep}>
-						<Button variant="flat" className="bg-primary text-white">
-							Continue
-						</Button>
+						<GradientBtn label="Continue" fullWidth={false} />
 					</Link>
 				</div>
 			</FormContainer>

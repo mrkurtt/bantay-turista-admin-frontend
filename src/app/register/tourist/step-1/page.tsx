@@ -2,7 +2,9 @@
 
 import FormContainer from '@/components/Container/FormContainer';
 import Container from '@/components/Container/LayoutContainer';
+import GradientBtn from '@/components/Button/GradientBtn';
 import PasswordInput from '@/components/Input/PasswordInput';
+import TextInput from '@/components/Input/TextInput';
 import FormStepper from '@/components/Stepper/FormStepper';
 import { Button, Input } from '@nextui-org/react';
 import Link from 'next/link';
@@ -51,8 +53,8 @@ const Step1 = () => {
 				<div className="my-8">
 					<p className="font-semibold mb-2">BASIC INFORMATION</p>
 					<div className="grid grid-cols-1  lg:grid-cols-2 gap-2">
-						<Input variant="bordered" label="First Name" />
-						<Input variant="bordered" label="Last Name" />
+						<TextInput label="First Name" />
+						<TextInput label="Last Name" />
 					</div>
 				</div>
 				<div className="my-8">
@@ -63,24 +65,24 @@ const Step1 = () => {
 						</span>
 					</p>
 					<div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
-						<Input variant="bordered" label="Month" />
-						<Input variant="bordered" label="Day" />
-						<Input variant="bordered" label="Year" />
+						<TextInput label="Month" />
+						<TextInput label="Day" />
+						<TextInput label="Year" />
 					</div>
 				</div>
 				<div className="my-8">
 					<p className="font-semibold mb-2">PERMANENT ADDRESS</p>
 					<div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
-						<Input variant="bordered" label="Country" />
-						<Input variant="bordered" label="Province" />
-						<Input variant="bordered" label="City/Municipality" />
+						<TextInput label="Country" />
+						<TextInput label="Province" />
+						<TextInput label="City/Municipality" />
 					</div>
 				</div>
 				<div className="my-8">
 					<p className="font-semibold mb-2">ACCOUNT DETAILS</p>
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-						<Input variant="bordered" label="Username" />
-						<Input type="email" variant="bordered" label="Email Address" />
+						<TextInput label="Username" />
+						<TextInput type="email" label="Email Address" />
 						<PasswordInput
 							label="Password"
 							placeholder="Enter your password"
@@ -97,9 +99,7 @@ const Step1 = () => {
 				</div>
 				<div className="w-full flex justify-end">
 					<Link href={nextStep}>
-						<Button variant="flat" className="bg-primary text-white">
-							Continue
-						</Button>
+						<GradientBtn label="Continue" fullWidth={false} />
 					</Link>
 				</div>
 			</FormContainer>
