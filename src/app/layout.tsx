@@ -45,10 +45,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" className="light">
-			<body className={`${poppins.className}`}>
+			<body className={`${poppins.className} text-gray-800 bg-gray-100`}>
 				<Providers>
-					<Nav />
-					{children}
+					<Nav /> {children}
 				</Providers>
 			</body>
 		</html>

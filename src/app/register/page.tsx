@@ -7,11 +7,11 @@ const Register = () => {
 	return (
 		<div className="w-full h-screen flex items-center justify-center bg-camiguin">
 			<div className="bg-white w-[500px] p-4 rounded-md">
-				<p className="text-center text-2xl font-bold text-primary mb-6">
-					Select User
+				<p className="text-center text-2xl font-bold text-gray-700 mb-6">
+					Select User Type
 				</p>
 				<div className="flex flex-col gap-y-4">
-					<Link href={'/register/tourist'}>
+					<Link href={'/register/tourist/step-1'}>
 						<GradientBtn label="Tourist" fullWidth={true} />
 					</Link>
 					<Link href={'/register/establishment'}>
