@@ -1,17 +1,9 @@
+import { IPasswordInputProps } from '@/utils/interfaces';
 import { Input } from '@nextui-org/react';
 import React, { useState } from 'react';
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 
-interface PasswordInputProps {
-	label?: string;
-	placeholder?: string;
-	isReadOnly?: boolean;
-	variant?: 'bordered' | 'filled' | 'underlined';
-	value?: string;
-	onChange?: (value: string) => void;
-}
-
-const PasswordInput: React.FC<PasswordInputProps> = ({
+const PasswordInput: React.FC<IPasswordInputProps> = ({
 	label = 'Password',
 	placeholder = 'Enter your password',
 	isReadOnly = false,

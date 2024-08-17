@@ -1,11 +1,6 @@
+import { IGradientBtnProps } from '@/utils/interfaces';
 import { Button } from '@nextui-org/react';
-import React, { MouseEventHandler } from 'react';
-
-interface IGradientBtnProps {
-	label: string;
-	fullWidth: boolean;
-	onClickHandler?: MouseEventHandler;
-}
+import React from 'react';
 
 const GradientBtn = ({
 	label,

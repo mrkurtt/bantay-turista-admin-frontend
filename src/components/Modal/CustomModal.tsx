@@ -7,14 +7,7 @@ import {
 	ModalFooter,
 	Button,
 } from '@nextui-org/react';
-
-interface IModalProps {
-	title: string;
-	body: React.ReactNode;
-	footer?: React.ReactNode;
-	isOpen: boolean;
-	onClose: () => void;
-}
+import { IModalProps } from '@/utils/interfaces';
 
 const CustomModal = ({ title, body, isOpen, onClose, footer }: IModalProps) => {
 	return (

@@ -1,13 +1,6 @@
+import { ITextInputProps } from '@/utils/interfaces';
 import { Input } from '@nextui-org/react';
 import React from 'react';
-
-interface ITextInputProps {
-	label: string;
-	onChange?: React.ChangeEventHandler<HTMLInputElement>;
-	type?: string;
-	isReadOnly?: boolean;
-	value?: string;
-}
 
 const TextInput = ({
 	label,
