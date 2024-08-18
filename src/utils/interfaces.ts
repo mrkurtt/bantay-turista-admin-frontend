@@ -43,3 +43,8 @@ export interface IStepperProps {
 	steps: Step[];
 	currentStepIndex: number;
 }
+
+export interface IDatePickerProps {
+	label: string;
+	isReadOnly?: boolean;
+}

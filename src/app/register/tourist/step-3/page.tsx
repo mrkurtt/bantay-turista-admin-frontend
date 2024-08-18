@@ -12,6 +12,7 @@ import PlainBtn from '@/components/Button/PlainBtn';
 import TextInput from '@/components/Input/TextInput';
 import Image from 'next/image';
 import Mikha from '../../../../../public/mikha.jpg';
+import CustomDatePicker from '@/components/Dropdown/CustomDatePicker';
 
 const Step3 = () => {
 	const [isVisible, setIsVisible] = useState(false);
@@ -65,28 +66,25 @@ const Step3 = () => {
 				<div className="my-8">
 					<p className="font-semibold mb-2">BASIC INFORMATION</p>
 					<div className="grid grid-cols-1  lg:grid-cols-2 gap-2">
-						<TextInput value="ksldjfj" isReadOnly={true} label="First Name" />
-						<TextInput value="ksldjfj" isReadOnly={true} label="Last Name" />
+						<TextInput
+							value="Mikhaela Jimenea"
+							isReadOnly={true}
+							label="First Name"
+						/>
+						<TextInput value="Lim" isReadOnly={true} label="Last Name" />
 					</div>
 				</div>
-				<div className="my-8">
-					<p className="font-semibold mb-2">
-						DATE OF BIRTH &nbsp;
-						<span className="text-gray-600 font-light text-sm">MM/DD/YYYY</span>
-					</p>
-					<div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
-						<TextInput value="ksldjfj" isReadOnly={true} label="Month" />
-						<TextInput value="ksldjfj" isReadOnly={true} label="Day" />
-						<TextInput value="ksldjfj" isReadOnly={true} label="Year" />
-					</div>
+				<div className="my-8 w-full">
+					<p className="font-semibold mb-2">DATE OF BIRTH</p>
+					<CustomDatePicker label="Birth Date" isReadOnly />
 				</div>
 				<div className="my-8">
 					<p className="font-semibold mb-2">PERMANENT ADDRESS</p>
 					<div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
-						<TextInput value="ksldjfj" isReadOnly={true} label="Country" />
-						<TextInput value="ksldjfj" isReadOnly={true} label="Province" />
+						<TextInput value="Philippines" isReadOnly={true} label="Country" />
+						<TextInput value="Manila" isReadOnly={true} label="Province" />
 						<TextInput
-							value="ksldjfj"
+							value="San Juan"
 							isReadOnly={true}
 							label="City/Municipality"
 						/>
@@ -95,9 +93,13 @@ const Step3 = () => {
 				<div className="my-8">
 					<p className="font-semibold mb-2">ACCOUNT DETAILS</p>
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-						<TextInput value="ksldjfj" isReadOnly={true} label="Username" />
 						<TextInput
-							value="ksldjfj"
+							value="mikhalim1108"
+							isReadOnly={true}
+							label="Username"
+						/>
+						<TextInput
+							value="mikha.lim@gmail.com"
 							isReadOnly={true}
 							label="Email Address"
 						/>
@@ -120,7 +122,7 @@ const Step3 = () => {
 
 				<div className="w-full flex justify-between">
 					<Link href={prevStep}>
-						<PlainBtn label="Back" />
+						<PlainBtn label="Back" fullWidth={false} />
 					</Link>
 					<GradientBtn label="Submit" fullWidth={false} />
 				</div>

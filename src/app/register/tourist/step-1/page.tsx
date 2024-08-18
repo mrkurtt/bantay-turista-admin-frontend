@@ -9,11 +9,11 @@ import FormStepper from '@/components/Stepper/FormStepper';
 import { Button, Input } from '@nextui-org/react';
 import Link from 'next/link';
 import React, { useState } from 'react';
+import CustomDatePicker from '@/components/Dropdown/CustomDatePicker';
 
 const Step1 = () => {
 	const [password, setPassword] = useState<string>('');
 	const [confirmPassword, setConfirmPassword] = useState<string>('');
-
 	const handlePasswordChange = (newPassword: string) => {
 		setPassword(newPassword);
 	};
@@ -57,18 +57,9 @@ const Step1 = () => {
 						<TextInput label="Last Name" />
 					</div>
 				</div>
-				<div className="my-8">
-					<p className="font-semibold mb-2">
-						DATE OF BIRTH
-						<span className="text-gray-600 font-light text-sm">
-							&nbsp; MM/DD/YYYY
-						</span>
-					</p>
-					<div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
-						<TextInput label="Month" />
-						<TextInput label="Day" />
-						<TextInput label="Year" />
-					</div>
+				<div className="my-8 w-full">
+					<p className="font-semibold mb-2">DATE OF BIRTH</p>
+					<CustomDatePicker label="Birth Date" />
 				</div>
 				<div className="my-8">
 					<p className="font-semibold mb-2">PERMANENT ADDRESS</p>
