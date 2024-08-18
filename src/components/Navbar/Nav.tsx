@@ -65,7 +65,7 @@ const Nav = () => {
 							<Link href={'/register/tourist/step-1'}>
 								<GradientBtn label="Tourist" fullWidth={true} />
 							</Link>
-							<Link href={'/register/establishment'}>
+							<Link href={'/register/establishment/step-1'}>
 								<GradientBtn label="Establishment" fullWidth={true} />
 							</Link>
 						</div>

@@ -11,14 +11,15 @@ import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 import PlainBtn from '@/components/Button/PlainBtn';
 import TextInput from '@/components/Input/TextInput';
 import Image from 'next/image';
-import Mikha from '../../../../../public/mikha.jpg';
+import TeaStreet from '../../../../../public/teastreet.jpg';
 import CustomDatePicker from '@/components/Dropdown/CustomDatePicker';
 
 const Step3 = () => {
 	const [isVisible, setIsVisible] = useState(false);
 	const toggleVisibility = () => setIsVisible(!isVisible);
-	const [password, setPassword] = useState<string>('sdgdfgdfg');
-	const [confirmPassword, setConfirmPassword] = useState<string>('fghdghdf');
+	const [password, setPassword] = useState<string>('teastreet@2024');
+	const [confirmPassword, setConfirmPassword] =
+		useState<string>('teastreet@2024');
 
 	const handlePasswordChange = (newPassword: string) => {
 		setPassword(newPassword);
@@ -28,7 +29,7 @@ const Step3 = () => {
 		setConfirmPassword(confirmPassword);
 	};
 
-	const prevStep = '/register/tourist/step-2';
+	const prevStep = '/register/establishment/step-2';
 
 	const steps = [
 		{
@@ -56,63 +57,59 @@ const Step3 = () => {
 			</div>
 			<FormContainer>
 				<FormStepper steps={steps} currentStepIndex={2} />
-
 				<div className="mt-6 w-full flex justify-center items-center">
-					<div className="h-56 w-56 overflow-hidden rounded-full border-2">
-						<Image src={Mikha} alt="Sample Profile" />
+					<div className="h-56 w-56 overflow-hidden border-2 rounded-full">
+						<Image src={TeaStreet} alt="Sample Profile" />
 					</div>
 				</div>
-
 				<div className="my-8">
 					<p className="font-semibold mb-2">BASIC INFORMATION</p>
 					<div className="grid grid-cols-1  lg:grid-cols-2 gap-2">
 						<TextInput
-							value="Mikhaela Jimenea"
-							isReadOnly={true}
-							label="First Name"
+							value="Tea Street"
+							isReadOnly
+							label="Establishment Name"
 						/>
-						<TextInput value="Lim" isReadOnly={true} label="Last Name" />
+						<TextInput
+							value="Cafe/Coffee Shop"
+							isReadOnly
+							label="Establishment Type"
+						/>
 					</div>
 				</div>
-				<div className="my-8 w-full">
-					<p className="font-semibold mb-2">DATE OF BIRTH</p>
-					<CustomDatePicker label="Birth Date" isReadOnly />
+				<div className="my-8">
+					<p className="font-semibold mb-2">LOCATION</p>
+					<div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
+						<TextInput value="Poblacion" isReadOnly label="Barangay" />
+						<TextInput value="Sagay" isReadOnly label="Municipality" />
+					</div>
 				</div>
 				<div className="my-8">
-					<p className="font-semibold mb-2">PERMANENT ADDRESS</p>
-					<div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
-						<TextInput value="Philippines" isReadOnly={true} label="Country" />
-						<TextInput value="Manila" isReadOnly={true} label="Province" />
-						<TextInput
-							value="San Juan"
-							isReadOnly={true}
-							label="City/Municipality"
-						/>
+					<p className="font-semibold mb-2">CONTACT INFORMATION</p>
+					<div className="w-full">
+						<TextInput value="09567891234" isReadOnly label="Contact Number" />
 					</div>
 				</div>
 				<div className="my-8">
 					<p className="font-semibold mb-2">ACCOUNT DETAILS</p>
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
+						<TextInput value="teastreet2022" isReadOnly label="Username" />
 						<TextInput
-							value="mikhalim1108"
-							isReadOnly={true}
-							label="Username"
-						/>
-						<TextInput
-							value="mikha.lim@gmail.com"
-							isReadOnly={true}
+							value="teastreet@gmail.com"
+							isReadOnly
+							type="email"
 							label="Email Address"
 						/>
 						<PasswordInput
 							label="Password"
-							isReadOnly={true}
+							isReadOnly
 							placeholder="Enter your password"
 							value={password}
 							onChange={handlePasswordChange}
 						/>
 						<PasswordInput
 							label="Confirm Password"
-							isReadOnly={true}
+							isReadOnly
 							placeholder="Re-type your password"
 							value={confirmPassword}
 							onChange={handleConfirmPasswordChange}
