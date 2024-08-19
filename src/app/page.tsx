@@ -9,10 +9,8 @@ export default function Home() {
 	return (
 		<main>
 			<Nav />
-			<div className="bg-camiguin w-full h-screen flex justify-center items-center">
-				<Container>
-					<LoginForm />
-				</Container>
+			<div className="bg-camiguin w-full px-[10px] sm:px-[100px] md:px-[200px]  lg:px-[400px] h-screen flex justify-center items-center">
+				<LoginForm />
 			</div>
 		</main>
 	);

@@ -2,7 +2,6 @@
 
 import GradientBtn from '@/components/Button/GradientBtn';
 import { Input } from '@nextui-org/react';
-import Link from 'next/link';
 import React from 'react';
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 
@@ -11,7 +10,7 @@ const LoginForm = () => {
 	const toggleVisibility = () => setIsVisible(!isVisible);
 
 	return (
-		<div className="bg-white w-[500px] p-4 rounded-md">
+		<div className="w-full bg-white p-4 rounded-md">
 			<h1 className="text-center text-2xl mb-4 font-semibold text-primary">
 				<span className="text-orange-600">Bantay</span> Turista
 			</h1>
@@ -46,13 +45,6 @@ const LoginForm = () => {
 				/>
 			</div>
 			<GradientBtn label="Login" fullWidth={true} />
-
-			{/* <div className="flex justify-center text-xs text-center mt-8">
-				<p className="text-xs">Don't have an account? &nbsp;</p>
-				<Link href={'/register'}>
-					<p className="font-bold text-orange-600"> Register here</p>
-				</Link>
-			</div> */}
 		</div>
 	);
 };
