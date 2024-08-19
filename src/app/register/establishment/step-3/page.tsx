@@ -13,6 +13,7 @@ import TextInput from '@/components/Input/TextInput';
 import Image from 'next/image';
 import TeaStreet from '../../../../../public/teastreet.jpg';
 import CustomDatePicker from '@/components/Dropdown/CustomDatePicker';
+import URLBasedImage from '@/components/Image/CustomImage';
 
 const Step3 = () => {
 	const [isVisible, setIsVisible] = useState(false);
@@ -57,11 +58,7 @@ const Step3 = () => {
 			</div>
 			<FormContainer>
 				<FormStepper steps={steps} currentStepIndex={2} />
-				<div className="mt-6 w-full flex justify-center items-center">
-					<div className="h-56 w-56 overflow-hidden border-2 rounded-full">
-						<Image src={TeaStreet} alt="Sample Profile" />
-					</div>
-				</div>
+				<URLBasedImage imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMhdpV469iCed-OlZ1wpJnhpEcNB4-_Fh6QA&s" />
 				<div className="my-8">
 					<p className="font-semibold mb-2">BASIC INFORMATION</p>
 					<div className="grid grid-cols-1  lg:grid-cols-2 gap-2">
