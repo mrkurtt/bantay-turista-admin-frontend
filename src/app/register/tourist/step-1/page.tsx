@@ -55,6 +55,8 @@ const Step1 = () => {
 					<div className="grid grid-cols-1  lg:grid-cols-2 gap-2">
 						<TextInput label="First Name" />
 						<TextInput label="Last Name" />
+						<TextInput label="Gender" />
+						<TextInput label="Nationality" />
 					</div>
 				</div>
 				<div className="my-8 w-full">

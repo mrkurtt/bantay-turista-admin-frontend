@@ -69,6 +69,8 @@ const Step3 = () => {
 							label="First Name"
 						/>
 						<TextInput value="Lim" isReadOnly={true} label="Last Name" />
+						<TextInput isReadOnly value="Female" label="Gender" />
+						<TextInput isReadOnly value="Filipino" label="Nationality" />
 					</div>
 				</div>
 				<div className="my-8 w-full">

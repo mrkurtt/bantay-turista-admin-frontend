@@ -80,6 +80,13 @@ const Step3 = () => {
 						<TextInput value="Poblacion" isReadOnly label="Barangay" />
 						<TextInput value="Sagay" isReadOnly label="Municipality" />
 					</div>
+					<div className="grid grid-cols-1 mt-2">
+						<TextInput
+							value="Chiu Bldg., Poblacion, Sagay, Camiguin"
+							isReadOnly
+							label="Complete Address"
+						/>
+					</div>
 				</div>
 				<div className="my-8">
 					<p className="font-semibold mb-2">CONTACT INFORMATION</p>

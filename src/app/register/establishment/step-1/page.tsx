@@ -63,6 +63,9 @@ const Step1 = () => {
 						<TextInput label="Barangay" />
 						<TextInput label="Municipality" />
 					</div>
+					<div className="grid grid-cols-1 mt-2">
+						<TextInput label="Complete Address" />
+					</div>
 				</div>
 				<div className="my-8">
 					<p className="font-semibold mb-2">CONTACT INFORMATION</p>
