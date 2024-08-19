@@ -4,7 +4,7 @@ import React from 'react';
 
 const GradientBtn = ({
 	label,
-	fullWidth,
+	fullWidth = false,
 	onClickHandler,
 }: IGradientBtnProps) => {
 	return (

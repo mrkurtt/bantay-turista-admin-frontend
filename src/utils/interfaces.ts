@@ -2,7 +2,7 @@ import { MouseEventHandler } from 'react';
 
 export interface IGradientBtnProps {
 	label: string;
-	fullWidth: boolean;
+	fullWidth?: boolean;
 	onClickHandler?: MouseEventHandler;
 }
 
@@ -47,4 +47,8 @@ export interface IStepperProps {
 export interface IDatePickerProps {
 	label: string;
 	isReadOnly?: boolean;
+}
+
+export interface IURLBasedImageProps {
+	imageUrl: string;
 }
