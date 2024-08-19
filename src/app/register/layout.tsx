@@ -1,3 +1,4 @@
+import Nav from '@/components/Navbar/Nav';
 import React from 'react';
 
 const Layout = ({
@@ -5,7 +6,12 @@ const Layout = ({
 }: Readonly<{
 	children: React.ReactNode;
 }>) => {
-	return <div>{children}</div>;
+	return (
+		<div>
+			<Nav />
+			{children}
+		</div>
+	);
 };
 
 export default Layout;
