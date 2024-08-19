@@ -12,6 +12,7 @@ import {
 } from '@nextui-org/react';
 import CustomModal from '@/components/Modal/CustomModal';
 import GradientBtn from '@/components/Button/GradientBtn';
+import AppLogo from './AppLogo';
 
 const Nav = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -22,15 +23,10 @@ const Nav = () => {
 	return (
 		<Navbar isBordered maxWidth="full">
 			<NavbarBrand>
-				<Link href="/">
-					<p className="font-bold sm:text-lg md:text-xl lg:text-2xl text-primary">
-						<span className="text-orange-600">Bantay</span> Turista
-					</p>
-				</Link>
+				<AppLogo />
 			</NavbarBrand>
 
 			<NavbarContent justify="end">
-				{/* <NavbarItem className="hidden lg:flex"></NavbarItem> */}
 				<NavbarItem>
 					<div className="flex gap-x-3">
 						<Button
