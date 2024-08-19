@@ -56,6 +56,8 @@ const TouristHome = () => {
 							label="First Name"
 						/>
 						<TextInput value="Lim" isReadOnly={true} label="Last Name" />
+						<TextInput isReadOnly={true} label="Gender" value="Female" />
+						<TextInput value="Filipino" isReadOnly={true} label="Nationality" />
 					</div>
 				</div>
 				<div className="my-8 w-full">
