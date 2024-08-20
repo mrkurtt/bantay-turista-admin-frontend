@@ -8,7 +8,7 @@ const PrivacyPolicy = () => {
 		<Container>
 			<PageTitle title="Privacy Policy" />
 			<FormContainer>
-				<div className="text-xs">
+				<div className="text-md">
 					<p className="text-sm">
 						Your privacy is important to us. It is Province of Camiguin's policy
 						to respect your privacy and comply with any applicable law and
@@ -17,7 +17,7 @@ const PrivacyPolicy = () => {
 						operate. This policy is effective as of 22 February 2021.
 					</p>
 				</div>
-				<div className="text-xs py-4">
+				<div className="text-md py-4">
 					<h3 className="font-semibold">Information We Collect</h3>
 					<p className="text-sm">
 						Information we collect includes both information you knowingly and
@@ -26,7 +26,7 @@ const PrivacyPolicy = () => {
 						your devices in the course of accessing our products and services.
 					</p>
 				</div>
-				<div className="text-xs py-4">
+				<div className="text-md py-4">
 					<h3 className="font-semibold">Personal Information</h3>
 					<p className="text-sm">
 						We may ask for personal information which may include one or more of
@@ -45,7 +45,7 @@ const PrivacyPolicy = () => {
 						<li>Establishment contact person</li>
 					</ul>
 				</div>
-				<div className="text-xs py-4">
+				<div className="text-md py-4">
 					<h3 className="font-semibold">
 						Legitimate Reasons for Processing Your Personal Information
 					</h3>
@@ -71,7 +71,7 @@ const PrivacyPolicy = () => {
 						trusted sources.
 					</p>
 				</div>
-				<div className="text-xs py-4">
+				<div className="text-md py-4">
 					<h3 className="font-semibold">
 						Security of Your Personal Information
 					</h3>
@@ -89,7 +89,7 @@ const PrivacyPolicy = () => {
 						information within the bounds of our services.
 					</p>
 				</div>
-				<div className="text-xs py-4">
+				<div className="text-md py-4">
 					<h3 className="font-semibold">
 						How Long We Keep Your Personal Information
 					</h3>
@@ -105,7 +105,7 @@ const PrivacyPolicy = () => {
 						research purposes or statistical purposes.
 					</p>
 				</div>
-				<div className="text-xs py-4">
+				<div className="text-md py-4">
 					<h3 className="font-semibold">
 						Your Rights and Controlling Your Personal Information{' '}
 					</h3>
@@ -144,7 +144,7 @@ const PrivacyPolicy = () => {
 						complaint.
 					</p>
 				</div>
-				<div className="text-xs py-4">
+				<div className="text-md py-4">
 					<p className="text-sm py-2">
 						We use “cookies” to collect information about you and your activity
 						across our site. A cookie is a small piece of data that our website
@@ -160,7 +160,7 @@ const PrivacyPolicy = () => {
 					</p>
 				</div>
 
-				<div className="text-xs py-4">
+				<div className="text-md py-4">
 					<h3 className="font-semibold">Changes to This Policy</h3>
 					<p className="text-sm">
 						At our discretion, we may change our privacy policy to reflect
@@ -173,7 +173,7 @@ const PrivacyPolicy = () => {
 						information.
 					</p>
 				</div>
-				<div className="text-xs py-4">
+				<div className="text-md py-4">
 					<h3 className="font-semibold">Changes to This Policy</h3>
 					<p className="text-sm">
 						For any questions or concerns regarding your privacy, you may
