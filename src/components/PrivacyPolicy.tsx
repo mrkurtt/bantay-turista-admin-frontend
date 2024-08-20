@@ -1,15 +1,12 @@
 import FormContainer from '@/components/Container/FormContainer';
 import Container from '@/components/Container/LayoutContainer';
 import React from 'react';
+import PageTitle from './Text/PageTitle';
 
 const PrivacyPolicy = () => {
 	return (
 		<Container>
-			<div className="flex justify-center">
-				<h1 className="text-gray-700 font-bold text-2xl mb-4">
-					Privacy Policy
-				</h1>
-			</div>
+			<PageTitle title="Privacy Policy" />
 			<FormContainer>
 				<div className="text-xs">
 					<p className="text-sm">
