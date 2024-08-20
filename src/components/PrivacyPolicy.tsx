@@ -33,16 +33,16 @@ const PrivacyPolicy = () => {
 						the following:
 					</p>
 
-					<ul className="list-disc list-inside text-sm text-gray-500 ">
-						<li>&bull; Name </li>
-						<li>&bull; Email</li>
-						<li>&bull; Date of birth</li>
-						<li>&bull; Phone/mobile number</li>
-						<li>&bull; Home/mailing address</li>
-						<li>&bull; Details and copy of your government or other IDs</li>
-						<li>&bull; Establishment address</li>
-						<li>&bull; Establishment type</li>
-						<li>&bull; Establishment contact person</li>
+					<ul className="list-disc list-inside text-sm ">
+						<li>Name </li>
+						<li>Email</li>
+						<li>Date of birth</li>
+						<li>Phone/mobile number</li>
+						<li>Home/mailing address</li>
+						<li>Details and copy of your government or other IDs</li>
+						<li>Establishment address</li>
+						<li>Establishment type</li>
+						<li>Establishment contact person</li>
 					</ul>
 				</div>
 				<div className="text-xs py-4">
