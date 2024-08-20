@@ -7,6 +7,7 @@ import Container from '@/components/Container/LayoutContainer';
 import CustomDatePicker from '@/components/Dropdown/CustomDatePicker';
 import URLBasedImage from '@/components/Image/CustomImage';
 import TextInput from '@/components/Input/TextInput';
+import PageTitle from '@/components/Text/PageTitle';
 import { Button } from '@nextui-org/react';
 import { useQRCode } from 'next-qrcode';
 import Link from 'next/link';
@@ -17,9 +18,7 @@ const TouristHome = () => {
 
 	return (
 		<Container>
-			<div className="flex justify-center">
-				<h1 className="text-gray-700 font-bold text-2xl mb-4">Profile</h1>
-			</div>
+			<PageTitle title="Profile" />
 
 			<FormContainer>
 				<div className="flex justify-center">

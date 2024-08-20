@@ -52,3 +52,15 @@ export interface IDatePickerProps {
 export interface IURLBasedImageProps {
 	imageUrl: string;
 }
+
+export interface ITouristRegFormProps {
+	steps: Step[];
+	currentStepIndex: number;
+	passwordHandler?: React.ChangeEventHandler<HTMLInputElement>;
+	confirmPasswordHandler?: React.ChangeEventHandler<HTMLInputElement>;
+	nextStep: string;
+}
+
+export interface IPageTitleProps {
+	title: string;
+}
