@@ -64,3 +64,15 @@ export interface ITouristRegFormProps {
 export interface IPageTitleProps {
 	title: string;
 }
+
+export interface IEmergencyContactProps {
+	agency_name: string;
+	photo_url: string;
+	phone_number: string;
+}
+
+export interface ITouristSpotCardProps {
+	name: string;
+	description: string;
+	photo_url: string;
+}
