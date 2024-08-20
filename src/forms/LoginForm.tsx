@@ -16,12 +16,7 @@ const LoginForm = () => {
 			</h1>
 			<h1 className="text-center text-primary font-bold text-2xl">LOGIN</h1>
 			<div className="flex flex-col my-8">
-				<Input
-					className="mb-4"
-					label="Username"
-					variant="bordered"
-					// placeholder="Enter your username"
-				/>
+				<Input className="mb-4" label="Username" variant="bordered" />
 				{/* <Input label="Password" placeholder="Enter your password" /> */}
 				<Input
 					label="Password"
