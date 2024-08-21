@@ -8,6 +8,7 @@ import { FaStoreAlt } from 'react-icons/fa';
 import { IoQrCode } from 'react-icons/io5';
 import { IoMdPin } from 'react-icons/io';
 import { FaSquarePhone } from 'react-icons/fa6';
+import { TbMessageReportFilled } from 'react-icons/tb';
 
 const sidebarItems = [
 	{
@@ -34,6 +35,11 @@ const sidebarItems = [
 		title: 'VA: Emergency Contacts',
 		icon: <FaSquarePhone size={20} className="text-primary" />,
 		href: '/admin/emergency-contacts',
+	},
+	{
+		title: 'Complaints',
+		icon: <TbMessageReportFilled size={20} className="text-primary" />,
+		href: '/admin/complaints',
 	},
 ];
 
