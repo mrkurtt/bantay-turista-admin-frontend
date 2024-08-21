@@ -1,7 +1,12 @@
+import ComplaintsTable from '@/components/Table/ComplaintsTable';
 import React from 'react';
 
 const ComplaintsList = () => {
-	return <div>ComplaintsList</div>;
+	return (
+		<div>
+			<ComplaintsTable />
+		</div>
+	);
 };
 
 export default ComplaintsList;

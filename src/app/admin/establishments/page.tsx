@@ -1,7 +1,12 @@
+import EstablishmentsTable from '@/components/Table/EstablishmentsTable';
 import React from 'react';
 
 const EstablishmentList = () => {
-	return <div>EstablishmentList</div>;
+	return (
+		<div>
+			<EstablishmentsTable />
+		</div>
+	);
 };
 
 export default EstablishmentList;
