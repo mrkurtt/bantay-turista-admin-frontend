@@ -11,10 +11,27 @@ import PageTitle from '@/components/Text/PageTitle';
 import { Button } from '@nextui-org/react';
 import { useQRCode } from 'next-qrcode';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 
 const TouristHome = () => {
-	const { Canvas } = useQRCode();
+	const { Canvas, Image } = useQRCode();
+	const [qrcode, setQrCode] = useState('BTUDYDK31J');
+
+	const downloadQRCode = () => {
+		const canvas = document.getElementById('qr-code') as HTMLCanvasElement;
+		if (canvas) {
+			const pngUrl = canvas
+				.toDataURL('image/png')
+				.replace('image/png', 'image/octet-stream');
+
+			let downloadLink = document.createElement('a');
+			downloadLink.href = pngUrl;
+			downloadLink.download = `${qrcode}.png`; // Set the download file name
+			document.body.appendChild(downloadLink);
+			downloadLink.click();
+			document.body.removeChild(downloadLink);
+		}
+	};
 
 	return (
 		<Container>
@@ -27,10 +44,11 @@ const TouristHome = () => {
 					</div>
 					<div className="flex flex-col items-center justify-center gap-y-2">
 						<div className="border p-4 rounded-sm">
-							<Canvas
-								text={'BTUDYDK31J'}
+							<Image
+								id="qr-code"
+								text={qrcode}
 								options={{
-									type: 'image/jpeg',
+									type: 'image/png',
 									quality: 0.3,
 									errorCorrectionLevel: 'M',
 									margin: 3,
@@ -43,7 +61,11 @@ const TouristHome = () => {
 								}}
 							/>
 						</div>
-						<PlainBtn fullWidth label="Download" />
+						<PlainBtn
+							fullWidth
+							onClickHandler={downloadQRCode}
+							label="Download"
+						/>
 					</div>
 				</div>
 				<div className="my-8">
