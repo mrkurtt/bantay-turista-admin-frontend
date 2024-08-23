@@ -8,8 +8,8 @@ import React from 'react';
 const Complaints = () => {
 	return (
 		<Container>
+			<PageTitle title="Complaint" />
 			<FormContainer>
-				<PageTitle title="Complaint" />
 				<div className="flex flex-col gap-y-6">
 					<Textarea
 						label="Complaint Description"
