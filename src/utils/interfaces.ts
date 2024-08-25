@@ -1,8 +1,41 @@
 import { MouseEventHandler } from 'react';
 
+export interface IUser {
+	username?: string;
+	password?: string;
+	role?: 'tourist' | 'establishment' | 'admin';
+}
+
+export interface ITourist {
+	first_name: string;
+	last_name: string;
+	email_address: string;
+	gender: string;
+	nationality: string;
+	birthdate: string;
+	country: string;
+	province: string;
+	city_municipality: string;
+	photo_url: string;
+	user_id: string;
+}
+
+export interface IEstablishment {
+	establishment_name: string;
+	establishment_type: string;
+	city_municipality: string;
+	barangay: string;
+	complete_address: string;
+	contact_number: string;
+	email_address: string;
+	photo_url: string;
+	user_id: string;
+}
+
 export interface IGradientBtnProps {
 	label: string;
 	fullWidth?: boolean;
+	isLoading?: boolean;
 	onClickHandler?: MouseEventHandler;
 }
 

@@ -1,13 +1,22 @@
 'use client';
 
 import GradientBtn from '@/components/Button/GradientBtn';
+import { useAuthStore } from '@/stores/useAuthStore';
 import { Input } from '@nextui-org/react';
-import React from 'react';
+import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 
 const LoginForm = () => {
 	const [isVisible, setIsVisible] = React.useState(false);
 	const toggleVisibility = () => setIsVisible(!isVisible);
+
+	const [username, setUsername] = useState('');
+	const [password, setPassword] = useState('');
+
+	const router = useRouter();
+
+	const { loginLoading, submitLogin } = useAuthStore((state) => state);
 
 	return (
 		<div className="w-full bg-white p-4 rounded-md">
@@ -16,12 +25,15 @@ const LoginForm = () => {
 			</h1>
 			<h1 className="text-center text-primary font-bold text-2xl">LOGIN</h1>
 			<div className="flex flex-col my-8">
-				<Input className="mb-4" label="Username" variant="bordered" />
-				{/* <Input label="Password" placeholder="Enter your password" /> */}
+				<Input
+					className="mb-4"
+					label="Username"
+					variant="bordered"
+					onChange={(e) => setUsername(e.target.value)}
+				/>
 				<Input
 					label="Password"
 					variant="bordered"
-					// placeholder="Enter your password"
 					endContent={
 						<button
 							className="focus:outline-none"
@@ -37,9 +49,22 @@ const LoginForm = () => {
 						</button>
 					}
 					type={isVisible ? 'text' : 'password'}
+					onChange={(e) => setPassword(e.target.value)}
 				/>
 			</div>
-			<GradientBtn label="Login" fullWidth={true} />
+			<GradientBtn
+				label="Login"
+				fullWidth={true}
+				isLoading={loginLoading}
+				onClickHandler={async () =>
+					await submitLogin({ username, password }).then((res) => {
+						console.log(res);
+						if (res.success) {
+							router.push(`/${res.role}`);
+						}
+					})
+				}
+			/>
 		</div>
 	);
 };

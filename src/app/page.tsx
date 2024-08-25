@@ -1,9 +1,5 @@
-import { Button, Input } from '@nextui-org/react';
-
-import { bgGradient } from '@/utils/color';
 import LoginForm from '@/forms/LoginForm';
 import Nav from '@/components/Navbar/Nav';
-import Container from '@/components/Container/LayoutContainer';
 
 export default function Home() {
 	return (
