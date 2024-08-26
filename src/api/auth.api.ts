@@ -50,3 +50,31 @@ export const registerEstablishment = async (establishment: IEstablishment) => {
 		return apiErrorHandler(error);
 	}
 };
+
+export const uploadImage = async (file: File) => {
+	try {
+		const data = new FormData();
+
+		data.append('file', file);
+		data.append(
+			'upload_preset',
+			`${process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}`
+		);
+
+		try {
+			let cloudName = `${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}`;
+			let resourceType = 'image';
+			let api = `https://api.cloudinary.com/v1_1/${cloudName}/${resourceType}/upload`;
+
+			const res = await axios.post(api, data);
+			const { secure_url } = res.data;
+			console.log(secure_url);
+
+			return secure_url;
+		} catch (error) {
+			console.error(error);
+		}
+	} catch (error) {
+		return apiErrorHandler(error);
+	}
+};

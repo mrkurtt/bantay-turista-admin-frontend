@@ -1,20 +1,21 @@
+import { IEstablishment, ITourist, IUser, TRegData } from '@/utils/interfaces';
+import { apiResponseHandler } from '@/utils/shared';
+import { DateValue } from '@nextui-org/react';
+import { create } from 'zustand';
 import {
 	login,
 	registerEstablishment,
 	registerTourist,
 	signup,
+	uploadImage,
 } from '@/api/auth.api';
-import { IEstablishment, ITourist, IUser } from '@/utils/interfaces';
-import { apiResponseHandler } from '@/utils/shared';
-import { DateValue } from '@nextui-org/react';
-import { create } from 'zustand';
 
 export type AuthState = {
 	loginLoading: boolean;
 	signupLoading: boolean;
 	touristRegLoading: boolean;
 	establishmentRegLoading: boolean;
-	t_regData: Object;
+	touristRegData: TRegData;
 	e_regData: Object;
 	r_username?: string;
 	r_password?: string;
@@ -29,33 +30,37 @@ export type AuthActions = {
 	) => Promise<any>;
 	updateTRegData: (key: any, value: any) => void;
 	updateTBirthdate: (value: DateValue) => void;
+	onUploadImage: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	uploadToCloudinary: (file: File) => Promise<any>;
 };
 
 export const useAuthStore = create<AuthState & AuthActions>((set) => ({
-	t_regData: {
-		t_firstName: '',
-		t_lastName: '',
-		t_gender: '',
-		t_nationality: '',
-		t_birthdate: '',
-		t_country: '',
-		t_province: '',
-		t_municipality: '',
-		t_photoUrl: '',
-		t_emailAddress: '',
-		t_username: '',
-		t_password: '',
-		t_confirmPassword: '',
+	touristRegData: {
+		firstName: '',
+		lastName: '',
+		gender: '',
+		nationality: '',
+		birthdate: null,
+		country: '',
+		image: undefined,
+		imageFile: undefined,
+		province: '',
+		municipality: '',
+		photoUrl: '',
+		emailAddress: '',
+		username: '',
+		password: '',
+		confirmPassword: '',
 	},
 	e_regData: {
 		e_name: '',
 		e_type: '',
-		t_gender: '',
-		t_nationality: '',
-		t_birthdate: '',
-		t_country: '',
-		t_province: '',
-		t_municipality: '',
+		gender: '',
+		nationality: '',
+		birthdate: '',
+		country: '',
+		province: '',
+		municipality: '',
 	},
 
 	r_username: '',
@@ -72,7 +77,6 @@ export const useAuthStore = create<AuthState & AuthActions>((set) => ({
 		}));
 
 		const authenticatedUser = await login(user);
-
 		apiResponseHandler(authenticatedUser);
 
 		set(() => ({
@@ -88,7 +92,6 @@ export const useAuthStore = create<AuthState & AuthActions>((set) => ({
 		}));
 
 		const newUser = await signup(user);
-
 		apiResponseHandler(newUser);
 
 		set(() => ({
@@ -130,8 +133,8 @@ export const useAuthStore = create<AuthState & AuthActions>((set) => ({
 
 	updateTRegData: (key: any, value: any) => {
 		set((state) => ({
-			t_regData: {
-				...state.t_regData,
+			touristRegData: {
+				...state.touristRegData,
 				[key]: value,
 			},
 		}));
@@ -139,10 +142,35 @@ export const useAuthStore = create<AuthState & AuthActions>((set) => ({
 
 	updateTBirthdate: (value) => {
 		set((state) => ({
-			t_regData: {
-				...state.t_regData,
-				t_birthdate: value,
+			touristRegData: {
+				...state.touristRegData,
+				birthdate: value,
 			},
 		}));
+	},
+
+	onUploadImage: (event: React.ChangeEvent<HTMLInputElement>) => {
+		const { files } = event.target;
+
+		if (files && files[0]) {
+			set((state) => ({
+				touristRegData: {
+					...state.touristRegData,
+					imageFile: files[0],
+				},
+			}));
+
+			set((state) => ({
+				touristRegData: {
+					...state.touristRegData,
+					image: URL.createObjectURL(files[0]),
+				},
+			}));
+		}
+	},
+
+	uploadToCloudinary: (file: File) => {
+		const url = uploadImage(file);
+		return url;
 	},
 }));

@@ -39,6 +39,7 @@ const PasswordInput: React.FC<IPasswordInputProps> = ({
 			type={isVisible ? 'text' : 'password'}
 			name={name}
 			onChange={onChange}
+			value={value}
 		/>
 	);
 };

@@ -58,7 +58,6 @@ const LoginForm = () => {
 				isLoading={loginLoading}
 				onClickHandler={async () =>
 					await submitLogin({ username, password }).then((res) => {
-						console.log(res);
 						if (res.success) {
 							router.push(`/${res.role}`);
 						}

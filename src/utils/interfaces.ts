@@ -1,118 +1,138 @@
-import { As, DateValue } from "@nextui-org/react";
-import { MouseEventHandler } from "react";
+import { As, DateValue } from '@nextui-org/react';
+import { MouseEventHandler } from 'react';
 
 export interface IUser {
-  username?: string;
-  password?: string;
-  role?: "tourist" | "establishment" | "admin";
+	username?: string;
+	password?: string;
+	role?: 'tourist' | 'establishment' | 'admin';
 }
 
 export interface ITourist {
-  first_name: string;
-  last_name: string;
-  email_address: string;
-  gender: string;
-  nationality: string;
-  birthdate: string;
-  country: string;
-  province: string;
-  city_municipality: string;
-  photo_url: string;
-  user_id: string;
+	first_name: string;
+	last_name: string;
+	email_address: string;
+	gender: string;
+	nationality: string;
+	birthdate: string;
+	country: string;
+	province: string;
+	city_municipality: string;
+	photo_url: string;
+	user_id: string;
 }
 
 export interface IEstablishment {
-  establishment_name: string;
-  establishment_type: string;
-  city_municipality: string;
-  barangay: string;
-  complete_address: string;
-  contact_number: string;
-  email_address: string;
-  photo_url: string;
-  user_id: string;
+	establishmenname: string;
+	establishmentype: string;
+	city_municipality: string;
+	barangay: string;
+	complete_address: string;
+	contacnumber: string;
+	email_address: string;
+	photo_url: string;
+	user_id: string;
 }
 
 export interface IGradientBtnProps {
-  label: string;
-  fullWidth?: boolean;
-  isLoading?: boolean;
-  onClickHandler?: MouseEventHandler;
-  as?: As<any> | undefined;
-  href?: string;
+	label: string;
+	isDisabled?: boolean;
+	fullWidth?: boolean;
+	isLoading?: boolean;
+	onClickHandler?: MouseEventHandler;
+	as?: As<any> | undefined;
+	href?: string;
 }
 
 export interface IPlainBtnProps extends IGradientBtnProps {}
 
 export interface IPasswordInputProps {
-  label?: string;
-  placeholder?: string;
-  isReadOnly?: boolean;
-  variant?: "bordered" | "filled" | "underlined";
-  value?: string;
-  name?: string | undefined;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	label?: string;
+	placeholder?: string;
+	isReadOnly?: boolean;
+	variant?: 'bordered' | 'filled' | 'underlined';
+	value?: string;
+	name?: string | undefined;
+	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface ITextInputProps {
-  label: string;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
-  type?: string;
-  isReadOnly?: boolean;
-  name?: string | undefined;
-  value?: string;
+	label: string;
+	onChange?: React.ChangeEventHandler<HTMLInputElement>;
+	type?: string;
+	isReadOnly?: boolean;
+	name?: string | undefined;
+	value?: string;
 }
 
 export interface IModalProps {
-  title: string;
-  body: React.ReactNode;
-  footer?: React.ReactNode;
-  isOpen: boolean;
-  onClose: () => void;
+	title: string;
+	body: React.ReactNode;
+	footer?: React.ReactNode;
+	isOpen: boolean;
+	onClose: () => void;
 }
 
 export interface Step {
-  stepLabel: string;
-  stepDescription: string;
-  completed: boolean;
+	stepLabel: string;
+	stepDescription: string;
+	completed: boolean;
 }
 
 export interface IStepperProps {
-  steps: Step[];
-  currentStepIndex: number;
+	steps: Step[];
+	currentStepIndex: number;
 }
 
 export interface IDatePickerProps {
-  label: string;
-  name?: string | undefined;
-  isReadOnly?: boolean;
-  dateChangeHandler: (value: DateValue) => void;
+	label: string;
+	name?: string | undefined;
+	isReadOnly?: boolean;
+	value?: DateValue | null;
+	dateChangeHandler?: (value: DateValue) => void;
 }
 
 export interface IURLBasedImageProps {
-  imageUrl: string;
+	imageUrl: string;
 }
 
 export interface ITouristRegFormProps {
-  steps: Step[];
-  currentStepIndex: number;
-  passwordHandler?: React.ChangeEventHandler<HTMLInputElement>;
-  confirmPasswordHandler?: React.ChangeEventHandler<HTMLInputElement>;
-  nextStep: string;
+	steps: Step[];
+	currentStepIndex: number;
+	passwordHandler?: React.ChangeEventHandler<HTMLInputElement>;
+	confirmPasswordHandler?: React.ChangeEventHandler<HTMLInputElement>;
+	nextStep: string;
 }
 
 export interface IPageTitleProps {
-  title: string;
+	title: string;
 }
 
 export interface IEmergencyContactProps {
-  agency_name: string;
-  photo_url: string;
-  phone_number: string;
+	agency_name: string;
+	photo_url: string;
+	phone_number: string;
 }
 
 export interface ITouristSpotCardProps {
-  name: string;
-  description: string;
-  photo_url: string;
+	name: string;
+	description: string;
+	photo_url: string;
+}
+
+export interface TRegData {
+	firstName: string;
+	lastName: string;
+	gender: string;
+	nationality: string;
+	birthdate: DateValue | null;
+	country: string;
+	province: string;
+	municipality: string;
+	photoUrl: string;
+	image: string | undefined;
+	imageFile: File | undefined;
+	emailAddress: string;
+	username: string;
+	password: string;
+	confirmPassword: string;
 }

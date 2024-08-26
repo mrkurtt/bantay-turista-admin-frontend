@@ -7,6 +7,7 @@ const CustomDatePicker = ({
 	isReadOnly = false,
 	name,
 	dateChangeHandler,
+	value,
 }: IDatePickerProps) => {
 	return (
 		<div className="w-full flex flex-row gap-4">
@@ -16,6 +17,7 @@ const CustomDatePicker = ({
 				label={label}
 				variant="bordered"
 				radius="sm"
+				value={value}
 				isReadOnly={isReadOnly}
 				showMonthAndYearPickers
 			/>
