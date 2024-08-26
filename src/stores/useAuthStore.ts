@@ -6,6 +6,7 @@ import {
 } from '@/api/auth.api';
 import { IEstablishment, ITourist, IUser } from '@/utils/interfaces';
 import { apiResponseHandler } from '@/utils/shared';
+import { DateValue } from '@nextui-org/react';
 import { create } from 'zustand';
 
 export type AuthState = {
@@ -13,6 +14,10 @@ export type AuthState = {
 	signupLoading: boolean;
 	touristRegLoading: boolean;
 	establishmentRegLoading: boolean;
+	t_regData: Object;
+	e_regData: Object;
+	r_username?: string;
+	r_password?: string;
 };
 
 export type AuthActions = {
@@ -22,9 +27,40 @@ export type AuthActions = {
 	submitEstablishmentRegistration: (
 		establishment: IEstablishment
 	) => Promise<any>;
+	updateTRegData: (key: any, value: any) => void;
+	updateTBirthdate: (value: DateValue) => void;
 };
 
 export const useAuthStore = create<AuthState & AuthActions>((set) => ({
+	t_regData: {
+		t_firstName: '',
+		t_lastName: '',
+		t_gender: '',
+		t_nationality: '',
+		t_birthdate: '',
+		t_country: '',
+		t_province: '',
+		t_municipality: '',
+		t_photoUrl: '',
+		t_emailAddress: '',
+		t_username: '',
+		t_password: '',
+		t_confirmPassword: '',
+	},
+	e_regData: {
+		e_name: '',
+		e_type: '',
+		t_gender: '',
+		t_nationality: '',
+		t_birthdate: '',
+		t_country: '',
+		t_province: '',
+		t_municipality: '',
+	},
+
+	r_username: '',
+	r_password: '',
+
 	loginLoading: false,
 	signupLoading: false,
 	touristRegLoading: false,
@@ -90,5 +126,23 @@ export const useAuthStore = create<AuthState & AuthActions>((set) => ({
 		}));
 
 		return newEstablishment;
+	},
+
+	updateTRegData: (key: any, value: any) => {
+		set((state) => ({
+			t_regData: {
+				...state.t_regData,
+				[key]: value,
+			},
+		}));
+	},
+
+	updateTBirthdate: (value) => {
+		set((state) => ({
+			t_regData: {
+				...state.t_regData,
+				t_birthdate: value,
+			},
+		}));
 	},
 }));

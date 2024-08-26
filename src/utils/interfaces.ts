@@ -1,3 +1,4 @@
+import { DateValue } from '@nextui-org/react';
 import { MouseEventHandler } from 'react';
 
 export interface IUser {
@@ -47,7 +48,8 @@ export interface IPasswordInputProps {
 	isReadOnly?: boolean;
 	variant?: 'bordered' | 'filled' | 'underlined';
 	value?: string;
-	onChange?: (value: string) => void;
+	name?: string | undefined;
+	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface ITextInputProps {
@@ -55,6 +57,7 @@ export interface ITextInputProps {
 	onChange?: React.ChangeEventHandler<HTMLInputElement>;
 	type?: string;
 	isReadOnly?: boolean;
+	name?: string | undefined;
 	value?: string;
 }
 
@@ -79,7 +82,9 @@ export interface IStepperProps {
 
 export interface IDatePickerProps {
 	label: string;
+	name?: string | undefined;
 	isReadOnly?: boolean;
+	dateChangeHandler: (value: DateValue) => void;
 }
 
 export interface IURLBasedImageProps {

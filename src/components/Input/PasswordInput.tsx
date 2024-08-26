@@ -8,21 +8,12 @@ const PasswordInput: React.FC<IPasswordInputProps> = ({
 	placeholder = 'Enter your password',
 	isReadOnly = false,
 	value,
+	name,
 	onChange,
 }) => {
 	const [isVisible, setIsVisible] = useState<boolean>(false);
-	const [password, setPassword] = useState<string>(value || ''); // If value is passed, use it; otherwise, use internal state
 
 	const toggleVisibility = () => setIsVisible(!isVisible);
-
-	const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const newPassword = e.target.value;
-		setPassword(newPassword);
-
-		if (onChange) {
-			onChange(newPassword);
-		}
-	};
 
 	return (
 		<Input
@@ -46,8 +37,8 @@ const PasswordInput: React.FC<IPasswordInputProps> = ({
 				</button>
 			}
 			type={isVisible ? 'text' : 'password'}
-			value={password}
-			onChange={handlePasswordChange}
+			name={name}
+			onChange={onChange}
 		/>
 	);
 };

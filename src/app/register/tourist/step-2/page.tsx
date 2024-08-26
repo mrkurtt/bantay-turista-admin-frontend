@@ -4,13 +4,15 @@ import FormContainer from '@/components/Container/FormContainer';
 import Container from '@/components/Container/LayoutContainer';
 import GradientBtn from '@/components/Button/GradientBtn';
 import FormStepper from '@/components/Stepper/FormStepper';
-import { Button, Link } from '@nextui-org/react';
-import React from 'react';
+import { Link } from '@nextui-org/react';
+import React, { useEffect } from 'react';
 import PlainBtn from '@/components/Button/PlainBtn';
+import { useAuthStore } from '@/stores/useAuthStore';
 
 const Step2 = () => {
 	const nextStep = '/register/tourist/step-3';
 	const prevStep = '/register/tourist/step-1';
+	const { t_regData } = useAuthStore((state) => state);
 
 	const steps = [
 		{
@@ -30,6 +32,10 @@ const Step2 = () => {
 		},
 	];
 
+	useEffect(() => {
+		console.log(t_regData);
+	}, [t_regData]);
+
 	return (
 		<Container>
 			<div className="mb-4">
@@ -38,7 +44,7 @@ const Step2 = () => {
 			</div>
 			<FormContainer>
 				<FormStepper steps={steps} currentStepIndex={1} />
-
+				{JSON.stringify(t_regData)}
 				<div className="my-8">
 					<p className="font-semibold mb-2">PHOTO</p>
 					<label

@@ -7,10 +7,12 @@ const TextInput = ({
 	onChange,
 	type = 'text',
 	isReadOnly = false,
+	name,
 	value,
 }: ITextInputProps) => {
 	return (
 		<Input
+			name={name}
 			type={type}
 			isReadOnly={isReadOnly}
 			onChange={onChange}
