@@ -22,12 +22,12 @@ export interface ITourist {
 }
 
 export interface IEstablishment {
-	establishmenname: string;
-	establishmentype: string;
+	establishment_name: string;
+	establishment_type: string;
 	city_municipality: string;
 	barangay: string;
 	complete_address: string;
-	contacnumber: string;
+	contact_number: string;
 	email_address: string;
 	photo_url: string;
 	user_id: string;
@@ -135,4 +135,20 @@ export interface TRegData {
 	username: string;
 	password: string;
 	confirmPassword: string;
+}
+
+export interface EstablishmentRegData {
+	establishmentName: string;
+	establishmentType: string;
+	cityMunicipality: string;
+	barangay: string;
+	completeAddress: string;
+	contactNumber: string;
+	emailAddress: string;
+	username: string;
+	password: string;
+	image: string | undefined;
+	imageFile: File | undefined;
+	confirmPassword: string;
+	photoUrl: string;
 }

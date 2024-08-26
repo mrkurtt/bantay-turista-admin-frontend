@@ -6,20 +6,20 @@ import GradientBtn from '@/components/Button/GradientBtn';
 import PasswordInput from '@/components/Input/PasswordInput';
 import TextInput from '@/components/Input/TextInput';
 import FormStepper from '@/components/Stepper/FormStepper';
-import { Button, Input } from '@nextui-org/react';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CustomDatePicker from '@/components/Dropdown/CustomDatePicker';
+import { useAuthStore } from '@/stores/useAuthStore';
+import toast from 'react-hot-toast';
 
 const Step1 = () => {
-	const [password, setPassword] = useState<string>('');
-	const [confirmPassword, setConfirmPassword] = useState<string>('');
-	const handlePasswordChange = (newPassword: string) => {
-		setPassword(newPassword);
-	};
+	const { establishmentRegData, updateERegData } = useAuthStore(
+		(state) => state
+	);
 
-	const handleConfirmPasswordChange = (confirmPassword: string) => {
-		setConfirmPassword(confirmPassword);
+	const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const { name, value } = e.target;
+		updateERegData(name, value);
 	};
 
 	const nextStep = '/register/establishment/step-2';
@@ -27,7 +27,7 @@ const Step1 = () => {
 	const steps = [
 		{
 			stepLabel: 'Step 1',
-			stepDescription: 'Personal Info',
+			stepDescription: 'Establishment Info',
 			completed: false,
 		},
 		{
@@ -42,6 +42,23 @@ const Step1 = () => {
 		},
 	];
 
+	const [match, setMatch] = useState<boolean>(false);
+
+	const checkPassword = () => {
+		if (
+			establishmentRegData.password !== establishmentRegData.confirmPassword
+		) {
+			setMatch(false);
+		} else {
+			setMatch(true);
+		}
+	};
+
+	useEffect(() => {
+		checkPassword();
+		console.log(match);
+	}, [establishmentRegData.confirmPassword]);
+
 	return (
 		<Container>
 			<div className="mb-4">
@@ -53,49 +70,99 @@ const Step1 = () => {
 				<div className="my-8">
 					<p className="font-semibold mb-2">BASIC INFORMATION</p>
 					<div className="grid grid-cols-1  lg:grid-cols-2 gap-2">
-						<TextInput label="Establishment Name" />
-						<TextInput label="Establishment Type" />
+						<TextInput
+							label="Establishment Name"
+							name="establishmentName"
+							onChange={handleFormChange}
+							value={establishmentRegData.establishmentName}
+						/>
+						<TextInput
+							label="Establishment Type"
+							name="establishmentType"
+							onChange={handleFormChange}
+							value={establishmentRegData.establishmentType}
+						/>
 					</div>
 				</div>
 				<div className="my-8">
 					<p className="font-semibold mb-2">LOCATION</p>
-					<div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-						<TextInput label="Barangay" />
-						<TextInput label="Municipality" />
+					<div className="grid grid-cols-1  lg:grid-cols-2 gap-2">
+						<TextInput
+							label="Barangay"
+							name="barangay"
+							onChange={handleFormChange}
+							value={establishmentRegData.barangay}
+						/>
+
+						<TextInput
+							label="Municipality"
+							name="cityMunicipality"
+							onChange={handleFormChange}
+							value={establishmentRegData.cityMunicipality}
+						/>
 					</div>
 					<div className="grid grid-cols-1 mt-2">
-						<TextInput label="Complete Address" />
+						<TextInput
+							label="Complete Address"
+							name="completeAddress"
+							onChange={handleFormChange}
+							value={establishmentRegData.completeAddress}
+						/>
 					</div>
 				</div>
-				<div className="my-8">
+				<div className="my-8 w-full">
 					<p className="font-semibold mb-2">CONTACT INFORMATION</p>
-					<div className="w-full">
-						<TextInput label="Contact Number" />
-					</div>
+					<TextInput
+						label="Contact Number"
+						name="contactNumber"
+						onChange={handleFormChange}
+						value={establishmentRegData.contactNumber}
+					/>
 				</div>
+
 				<div className="my-8">
 					<p className="font-semibold mb-2">ACCOUNT DETAILS</p>
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-						<TextInput label="Username" />
-						<TextInput type="email" label="Email Address" />
+						<TextInput
+							label="Username"
+							name="username"
+							onChange={handleFormChange}
+							value={establishmentRegData.username}
+						/>
+						<TextInput
+							type="email"
+							label="Email Address"
+							name="emailAddress"
+							onChange={handleFormChange}
+							value={establishmentRegData.emailAddress}
+						/>
 						<PasswordInput
 							label="Password"
 							placeholder="Enter your password"
-							value={password}
-							onChange={handlePasswordChange}
+							name="password"
+							onChange={handleFormChange}
+							value={establishmentRegData.password}
 						/>
 						<PasswordInput
 							label="Confirm Password"
 							placeholder="Re-type your password"
-							value={confirmPassword}
-							onChange={handleConfirmPasswordChange}
+							name="confirmPassword"
+							onChange={handleFormChange}
+							value={establishmentRegData.confirmPassword}
 						/>
+						<p className="text-red-600 text-xs">
+							{!match && 'Passwords do not match'}
+						</p>
 					</div>
 				</div>
 				<div className="w-full flex justify-end">
-					<Link href={nextStep}>
-						<GradientBtn label="Continue" fullWidth={false} />
-					</Link>
+					<GradientBtn
+						as={Link}
+						href={nextStep}
+						label="Continue"
+						isDisabled={!match}
+						fullWidth={false}
+					/>
 				</div>
 			</FormContainer>
 		</Container>

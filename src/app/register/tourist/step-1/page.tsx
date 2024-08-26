@@ -57,10 +57,6 @@ const Step1 = () => {
 		console.log(match);
 	}, [touristRegData.confirmPassword]);
 
-	// useEffect(() => {
-	// 	console.log(touristRegData);
-	// }, [touristRegData]);
-
 	return (
 		<Container>
 			<div className="mb-4">

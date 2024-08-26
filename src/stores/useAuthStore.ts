@@ -1,4 +1,10 @@
-import { IEstablishment, ITourist, IUser, TRegData } from '@/utils/interfaces';
+import {
+	EstablishmentRegData,
+	IEstablishment,
+	ITourist,
+	IUser,
+	TRegData,
+} from '@/utils/interfaces';
 import { apiResponseHandler } from '@/utils/shared';
 import { DateValue } from '@nextui-org/react';
 import { create } from 'zustand';
@@ -16,9 +22,7 @@ export type AuthState = {
 	touristRegLoading: boolean;
 	establishmentRegLoading: boolean;
 	touristRegData: TRegData;
-	e_regData: Object;
-	r_username?: string;
-	r_password?: string;
+	establishmentRegData: EstablishmentRegData;
 };
 
 export type AuthActions = {
@@ -29,8 +33,12 @@ export type AuthActions = {
 		establishment: IEstablishment
 	) => Promise<any>;
 	updateTRegData: (key: any, value: any) => void;
+	updateERegData: (key: any, value: any) => void;
 	updateTBirthdate: (value: DateValue) => void;
-	onUploadImage: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	onUploadTouristImage: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	onUploadEstablishmentImage: (
+		event: React.ChangeEvent<HTMLInputElement>
+	) => void;
 	uploadToCloudinary: (file: File) => Promise<any>;
 };
 
@@ -52,19 +60,22 @@ export const useAuthStore = create<AuthState & AuthActions>((set) => ({
 		password: '',
 		confirmPassword: '',
 	},
-	e_regData: {
-		e_name: '',
-		e_type: '',
-		gender: '',
-		nationality: '',
-		birthdate: '',
-		country: '',
-		province: '',
-		municipality: '',
-	},
 
-	r_username: '',
-	r_password: '',
+	establishmentRegData: {
+		establishmentName: '',
+		establishmentType: '',
+		cityMunicipality: '',
+		barangay: '',
+		completeAddress: '',
+		contactNumber: '',
+		image: undefined,
+		imageFile: undefined,
+		emailAddress: '',
+		photoUrl: '',
+		username: '',
+		password: '',
+		confirmPassword: '',
+	},
 
 	loginLoading: false,
 	signupLoading: false,
@@ -140,6 +151,15 @@ export const useAuthStore = create<AuthState & AuthActions>((set) => ({
 		}));
 	},
 
+	updateERegData: (key: any, value: any) => {
+		set((state) => ({
+			establishmentRegData: {
+				...state.establishmentRegData,
+				[key]: value,
+			},
+		}));
+	},
+
 	updateTBirthdate: (value) => {
 		set((state) => ({
 			touristRegData: {
@@ -149,7 +169,7 @@ export const useAuthStore = create<AuthState & AuthActions>((set) => ({
 		}));
 	},
 
-	onUploadImage: (event: React.ChangeEvent<HTMLInputElement>) => {
+	onUploadTouristImage: (event: React.ChangeEvent<HTMLInputElement>) => {
 		const { files } = event.target;
 
 		if (files && files[0]) {
@@ -163,6 +183,26 @@ export const useAuthStore = create<AuthState & AuthActions>((set) => ({
 			set((state) => ({
 				touristRegData: {
 					...state.touristRegData,
+					image: URL.createObjectURL(files[0]),
+				},
+			}));
+		}
+	},
+
+	onUploadEstablishmentImage: (event: React.ChangeEvent<HTMLInputElement>) => {
+		const { files } = event.target;
+
+		if (files && files[0]) {
+			set((state) => ({
+				establishmentRegData: {
+					...state.establishmentRegData,
+					imageFile: files[0],
+				},
+			}));
+
+			set((state) => ({
+				establishmentRegData: {
+					...state.establishmentRegData,
 					image: URL.createObjectURL(files[0]),
 				},
 			}));

@@ -12,7 +12,9 @@ import Link from 'next/link';
 const Step2 = () => {
 	const nextStep = '/register/tourist/step-3';
 	const prevStep = '/register/tourist/step-1';
-	const { touristRegData, onUploadImage } = useAuthStore((state) => state);
+	const { touristRegData, onUploadTouristImage } = useAuthStore(
+		(state) => state
+	);
 
 	const steps = [
 		{
@@ -62,7 +64,7 @@ const Step2 = () => {
 						)}
 						<input
 							className=""
-							onChange={onUploadImage}
+							onChange={onUploadTouristImage}
 							name="imageFile"
 							id="file_input"
 							type="file"

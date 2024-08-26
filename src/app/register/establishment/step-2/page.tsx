@@ -4,18 +4,22 @@ import FormContainer from '@/components/Container/FormContainer';
 import Container from '@/components/Container/LayoutContainer';
 import GradientBtn from '@/components/Button/GradientBtn';
 import FormStepper from '@/components/Stepper/FormStepper';
-import { Button, Link } from '@nextui-org/react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PlainBtn from '@/components/Button/PlainBtn';
+import { useAuthStore } from '@/stores/useAuthStore';
+import Link from 'next/link';
 
 const Step2 = () => {
 	const nextStep = '/register/establishment/step-3';
 	const prevStep = '/register/establishment/step-1';
+	const { establishmentRegData, onUploadEstablishmentImage } = useAuthStore(
+		(state) => state
+	);
 
 	const steps = [
 		{
 			stepLabel: 'Step 1',
-			stepDescription: 'Personal Info',
+			stepDescription: 'Establishment Info',
 			completed: true,
 		},
 		{
@@ -30,6 +34,10 @@ const Step2 = () => {
 		},
 	];
 
+	useEffect(() => {
+		console.log(establishmentRegData);
+	}, [establishmentRegData]);
+
 	return (
 		<Container>
 			<div className="mb-4">
@@ -38,27 +46,41 @@ const Step2 = () => {
 			</div>
 			<FormContainer>
 				<FormStepper steps={steps} currentStepIndex={1} />
-
 				<div className="my-8">
 					<p className="font-semibold mb-2">PHOTO</p>
 					<label
 						className="block mb-2 text-sm text-gray-900 dark:text-white"
 						htmlFor="file_input"
 					>
-						Please upload a photo for your establishment.
+						Please upload a photo of your establishment.
 					</label>
-					<div className="flex justify-center px-2 py-16 w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
-						<input className="" id="file_input" type="file" />
+					<div className="flex flex-col items-center gap-y-3 px-2 py-16 w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
+						{establishmentRegData.image && (
+							<img
+								src={establishmentRegData.image}
+								alt="imagePreview"
+								className="w-40"
+							/>
+						)}
+						<input
+							className=""
+							onChange={onUploadEstablishmentImage}
+							name="imageFile"
+							id="file_input"
+							type="file"
+							value={establishmentRegData.image && undefined}
+						/>
 					</div>
 				</div>
 
 				<div className="flex justify-between">
-					<Link href={prevStep}>
-						<PlainBtn label="Back" fullWidth={false} />
-					</Link>
-					<Link href={nextStep}>
-						<GradientBtn label="Continue" fullWidth={false} />
-					</Link>
+					<PlainBtn as={Link} href={prevStep} label="Back" fullWidth={false} />
+					<GradientBtn
+						as={Link}
+						href={nextStep}
+						label="Continue"
+						fullWidth={false}
+					/>
 				</div>
 			</FormContainer>
 		</Container>
