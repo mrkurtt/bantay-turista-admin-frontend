@@ -59,14 +59,14 @@ const Step3 = () => {
 
 			const createTouristResponse = await submitTouristRegistration({
 				first_name: touristRegData.firstName,
-				last_name: 'Timajo',
-				email_address: 'kurt.timajo@example.com',
-				gender: 'Male',
-				nationality: 'Filipino',
-				birthdate: `${touristRegData.birthdate?.year}-${touristRegData.birthdate?.month}-${touristRegData.birthdate?.day}`,
-				country: 'Philippines',
-				province: 'Misamis Oriental',
-				city_municipality: 'Cagayan de Oro',
+				last_name: touristRegData.lastName,
+				email_address: touristRegData.emailAddress,
+				gender: touristRegData.gender,
+				nationality: touristRegData.nationality,
+				birthdate: touristRegData.birthdate,
+				country: touristRegData.country,
+				province: touristRegData.province,
+				city_municipality: touristRegData.municipality,
 				photo_url,
 				user_id: signupResponse.userId,
 			});
@@ -118,10 +118,10 @@ const Step3 = () => {
 				</div>
 				<div className="my-8 w-full">
 					<p className="font-semibold mb-2">DATE OF BIRTH</p>
-					<CustomDatePicker
+					<TextInput
+						isReadOnly
 						label="Birth Date"
 						value={touristRegData.birthdate}
-						isReadOnly
 					/>
 				</div>
 				<div className="my-8">

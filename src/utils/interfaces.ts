@@ -1,4 +1,10 @@
+import {
+	CalendarDate,
+	CalendarDateTime,
+	ZonedDateTime,
+} from '@internationalized/date';
 import { As, DateValue } from '@nextui-org/react';
+import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import { MouseEventHandler } from 'react';
 
 export interface IUser {
@@ -19,6 +25,7 @@ export interface ITourist {
 	city_municipality: string;
 	photo_url: string;
 	user_id: string;
+	qr_code?: string;
 }
 
 export interface IEstablishment {
@@ -87,12 +94,14 @@ export interface IDatePickerProps {
 	label: string;
 	name?: string | undefined;
 	isReadOnly?: boolean;
-	value?: DateValue | null;
-	dateChangeHandler?: (value: DateValue) => void;
+	value?: ZonedDateTime | CalendarDate | CalendarDateTime | undefined | null;
+	dateChangeHandler?: (
+		value: ZonedDateTime | CalendarDate | CalendarDateTime | undefined | null
+	) => void;
 }
 
 export interface IURLBasedImageProps {
-	imageUrl: string;
+	imageUrl: string | StaticImport;
 }
 
 export interface ITouristRegFormProps {
@@ -124,7 +133,7 @@ export interface TRegData {
 	lastName: string;
 	gender: string;
 	nationality: string;
-	birthdate: DateValue | null;
+	birthdate: string;
 	country: string;
 	province: string;
 	municipality: string;

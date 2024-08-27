@@ -5,7 +5,7 @@ import React from 'react';
 const URLBasedImage = ({ imageUrl }: IURLBasedImageProps) => {
 	return (
 		<div className="mt-6 w-full flex justify-center items-center">
-			<div className="h-48 w-48 overflow-hidden rounded-full border-2">
+			<div className="flex items-center w-48 border-2">
 				<Image
 					src={imageUrl}
 					alt="External Image"

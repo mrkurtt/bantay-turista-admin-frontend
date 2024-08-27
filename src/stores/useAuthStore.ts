@@ -34,7 +34,7 @@ export type AuthActions = {
 	) => Promise<any>;
 	updateTRegData: (key: any, value: any) => void;
 	updateERegData: (key: any, value: any) => void;
-	updateTBirthdate: (value: DateValue) => void;
+	// updateTBirthdate: (value: DateValue) => void;
 	onUploadTouristImage: (event: React.ChangeEvent<HTMLInputElement>) => void;
 	onUploadEstablishmentImage: (
 		event: React.ChangeEvent<HTMLInputElement>
@@ -48,7 +48,7 @@ export const useAuthStore = create<AuthState & AuthActions>((set) => ({
 		lastName: '',
 		gender: '',
 		nationality: '',
-		birthdate: null,
+		birthdate: '',
 		country: '',
 		image: undefined,
 		imageFile: undefined,
@@ -160,14 +160,14 @@ export const useAuthStore = create<AuthState & AuthActions>((set) => ({
 		}));
 	},
 
-	updateTBirthdate: (value) => {
-		set((state) => ({
-			touristRegData: {
-				...state.touristRegData,
-				birthdate: value,
-			},
-		}));
-	},
+	// updateTBirthdate: (value) => {
+	// 	set((state) => ({
+	// 		touristRegData: {
+	// 			...state.touristRegData,
+	// 			birthdate: value,
+	// 		},
+	// 	}));
+	// },
 
 	onUploadTouristImage: (event: React.ChangeEvent<HTMLInputElement>) => {
 		const { files } = event.target;

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.1.5",
+    "@internationalized/date": "^3.5.5",
     "@keyvaluesystems/react-stepper": "^1.0.4",
     "@nextui-org/react": "^2.4.6",
     "axios": "^1.7.4",

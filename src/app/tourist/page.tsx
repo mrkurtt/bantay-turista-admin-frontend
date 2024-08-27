@@ -1,21 +1,26 @@
 'use client';
 
 import GradientBtn from '@/components/Button/GradientBtn';
-import PlainBtn from '@/components/Button/PlainBtn';
 import FormContainer from '@/components/Container/FormContainer';
 import Container from '@/components/Container/LayoutContainer';
 import CustomDatePicker from '@/components/Dropdown/CustomDatePicker';
 import URLBasedImage from '@/components/Image/CustomImage';
 import TextInput from '@/components/Input/TextInput';
 import PageTitle from '@/components/Text/PageTitle';
-import { Button } from '@nextui-org/react';
+import { useTouristStore } from '@/stores/useTouristStore';
 import { useQRCode } from 'next-qrcode';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
+import { dateParser } from '@/utils/helper';
 
 const TouristHome = () => {
 	const { Canvas, Image } = useQRCode();
 	const [qrcode, setQrCode] = useState('BTUDYDK31J');
+
+	const { getTouristDetails, touristDetails } = useTouristStore(
+		(state) => state
+	);
 
 	const downloadQRCode = () => {
 		const canvas = document.getElementById('qr-code') as HTMLCanvasElement;
@@ -33,6 +38,10 @@ const TouristHome = () => {
 		}
 	};
 
+	useEffect(() => {
+		getTouristDetails(Cookies.get('user_id'));
+	}, []);
+
 	return (
 		<Container>
 			<PageTitle title="Profile" />
@@ -40,13 +49,13 @@ const TouristHome = () => {
 			<FormContainer>
 				<div className="flex justify-between items-start">
 					<div>
-						<URLBasedImage imageUrl="https://i.pinimg.com/736x/73/f4/b4/73f4b44ed39cd152627199ccc31c0af1.jpg" />
+						<URLBasedImage imageUrl={`${touristDetails?.photo_url}`} />
 					</div>
 					<div className="flex flex-col items-center justify-center gap-y-2">
 						<div className="border p-4 rounded-sm">
 							<Image
 								id="qr-code"
-								text={qrcode}
+								text={`${touristDetails?.qr_code}`}
 								options={{
 									type: 'image/png',
 									quality: 0.3,
@@ -61,37 +70,56 @@ const TouristHome = () => {
 								}}
 							/>
 						</div>
-						<PlainBtn
-							fullWidth
-							onClickHandler={downloadQRCode}
-							label="Download"
-						/>
 					</div>
 				</div>
 				<div className="my-8">
 					<p className="font-semibold mb-2">BASIC INFORMATION</p>
 					<div className="grid grid-cols-1  lg:grid-cols-2 gap-2">
 						<TextInput
-							value="Mikhaela Jimenea"
+							value={touristDetails?.first_name}
 							isReadOnly={true}
 							label="First Name"
 						/>
-						<TextInput value="Lim" isReadOnly={true} label="Last Name" />
-						<TextInput isReadOnly={true} label="Gender" value="Female" />
-						<TextInput value="Filipino" isReadOnly={true} label="Nationality" />
+						<TextInput
+							value={touristDetails?.last_name}
+							isReadOnly={true}
+							label="Last Name"
+						/>
+						<TextInput
+							value={touristDetails?.gender}
+							isReadOnly={true}
+							label="Gender"
+						/>
+						<TextInput
+							value={touristDetails?.nationality}
+							isReadOnly={true}
+							label="Nationality"
+						/>
 					</div>
 				</div>
 				<div className="my-8 w-full">
 					<p className="font-semibold mb-2">DATE OF BIRTH</p>
-					<CustomDatePicker label="Birth Date" isReadOnly />
+					<TextInput
+						value={touristDetails?.birthdate}
+						isReadOnly={true}
+						label="Birth Day"
+					/>
 				</div>
 				<div className="my-8">
 					<p className="font-semibold mb-2">PERMANENT ADDRESS</p>
 					<div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
-						<TextInput value="Philippines" isReadOnly={true} label="Country" />
-						<TextInput value="Manila" isReadOnly={true} label="Province" />
 						<TextInput
-							value="San Juan"
+							value={touristDetails?.country}
+							isReadOnly={true}
+							label="Country"
+						/>
+						<TextInput
+							value={touristDetails?.province}
+							isReadOnly={true}
+							label="Province"
+						/>
+						<TextInput
+							value={touristDetails?.city_municipality}
 							isReadOnly={true}
 							label="City/Municipality"
 						/>

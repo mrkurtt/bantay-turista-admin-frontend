@@ -8,14 +8,10 @@ import TextInput from '@/components/Input/TextInput';
 import FormStepper from '@/components/Stepper/FormStepper';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import CustomDatePicker from '@/components/Dropdown/CustomDatePicker';
 import { useAuthStore } from '@/stores/useAuthStore';
-import toast from 'react-hot-toast';
 
 const Step1 = () => {
-	const { touristRegData, updateTRegData, updateTBirthdate } = useAuthStore(
-		(state) => state
-	);
+	const { touristRegData, updateTRegData } = useAuthStore((state) => state);
 
 	const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
@@ -81,7 +77,7 @@ const Step1 = () => {
 							value={touristRegData.lastName}
 						/>
 						<TextInput
-							label="Gender"
+							label="Gender (Male or Female)"
 							name="gender"
 							onChange={handleFormChange}
 							value={touristRegData.gender}
@@ -96,10 +92,10 @@ const Step1 = () => {
 				</div>
 				<div className="my-8 w-full">
 					<p className="font-semibold mb-2">DATE OF BIRTH</p>
-					<CustomDatePicker
-						label="Birth Date"
+					<TextInput
+						label="Birthday (ex. August 16, 2002)"
 						name="birthdate"
-						dateChangeHandler={updateTBirthdate}
+						onChange={handleFormChange}
 						value={touristRegData.birthdate}
 					/>
 				</div>
