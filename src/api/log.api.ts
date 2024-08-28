@@ -1,4 +1,4 @@
-import { ILog } from '@/stores/useLogStore';
+import { ILog } from '@/utils/interfaces';
 import { api } from './axios';
 import { apiErrorHandler } from '@/utils/shared';
 
