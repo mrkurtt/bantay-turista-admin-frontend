@@ -19,7 +19,7 @@ const LoginForm = () => {
 	const { loginLoading, submitLogin } = useAuthStore((state) => state);
 
 	return (
-		<div className="max-w-[500px] bg-white p-4 rounded-md">
+		<div className="w-full max-w-[500px] bg-white p-4 rounded-md">
 			<h1 className="text-center text-2xl mb-4 font-semibold text-primary">
 				<span className="text-orange-600">Bantay</span> Turista
 			</h1>
