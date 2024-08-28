@@ -14,6 +14,7 @@ import {
 	signup,
 	uploadImage,
 } from '@/api/auth.api';
+import Cookies from 'js-cookie';
 
 export type AuthState = {
 	loginLoading: boolean;
@@ -39,6 +40,7 @@ export type AuthActions = {
 		event: React.ChangeEvent<HTMLInputElement>
 	) => void;
 	uploadToCloudinary: (file: File) => Promise<any>;
+	onLogout: () => void;
 };
 
 export const useAuthStore = create<AuthState & AuthActions>((set) => ({
@@ -80,6 +82,11 @@ export const useAuthStore = create<AuthState & AuthActions>((set) => ({
 	signupLoading: false,
 	touristRegLoading: false,
 	establishmentRegLoading: false,
+
+	onLogout: () => {
+		Cookies.remove('access_token');
+		Cookies.remove('user_id');
+	},
 
 	submitLogin: async (user: IUser) => {
 		set(() => ({

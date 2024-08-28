@@ -11,11 +11,22 @@ import {
 	useDisclosure,
 } from '@nextui-org/react';
 import AppLogo from './AppLogo';
+import PlainBtn from '../Button/PlainBtn';
+import { useRouter } from 'next/navigation';
+import { useAuthStore } from '@/stores/useAuthStore';
 
 const EstablishmentNav = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const handleOpen = () => {
 		onOpen();
+	};
+
+	const router = useRouter();
+	const { onLogout } = useAuthStore();
+
+	const handleLogout = () => {
+		onLogout();
+		router.push('/');
 	};
 
 	return (
@@ -36,6 +47,15 @@ const EstablishmentNav = () => {
 						>
 							Privacy Policy
 						</Link>
+					</div>
+				</NavbarItem>
+				<NavbarItem>
+					<div className="flex items-center">
+						<div className="flex items-center ms-3">
+							<div>
+								<PlainBtn onClickHandler={handleLogout} label="Logout" />
+							</div>
+						</div>
 					</div>
 				</NavbarItem>
 			</NavbarContent>
