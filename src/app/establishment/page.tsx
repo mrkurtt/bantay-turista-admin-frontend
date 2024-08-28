@@ -1,20 +1,24 @@
 'use client';
 
 import GradientBtn from '@/components/Button/GradientBtn';
-import PlainBtn from '@/components/Button/PlainBtn';
 import FormContainer from '@/components/Container/FormContainer';
 import Container from '@/components/Container/LayoutContainer';
-import CustomDatePicker from '@/components/Dropdown/CustomDatePicker';
 import URLBasedImage from '@/components/Image/CustomImage';
 import TextInput from '@/components/Input/TextInput';
 import PageTitle from '@/components/Text/PageTitle';
-import { Button } from '@nextui-org/react';
-import { useQRCode } from 'next-qrcode';
+import { useEstablishmentStore } from '@/stores/useEstablishmentStore';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect } from 'react';
+import Cookies from 'js-cookie';
 
-const TouristHome = () => {
-	const { Canvas } = useQRCode();
+const EstablishmentHome = () => {
+	const { getEstablishmentDetails, establishmentDetails } =
+		useEstablishmentStore();
+
+	useEffect(() => {
+		getEstablishmentDetails(`${Cookies.get('user_id')}`);
+		console.log(establishmentDetails);
+	}, []);
 
 	return (
 		<Container>
@@ -23,19 +27,19 @@ const TouristHome = () => {
 			<FormContainer>
 				<div className="flex justify-center">
 					<div>
-						<URLBasedImage imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMhdpV469iCed-OlZ1wpJnhpEcNB4-_Fh6QA&s" />
+						<URLBasedImage imageUrl={`${establishmentDetails?.photo_url}`} />
 					</div>
 				</div>
 				<div className="my-8">
 					<p className="font-semibold mb-2">BASIC INFORMATION</p>
 					<div className="grid grid-cols-1  lg:grid-cols-2 gap-2">
 						<TextInput
-							value="Tea Street"
+							value={establishmentDetails?.establishment_name}
 							isReadOnly
 							label="Establishment Name"
 						/>
 						<TextInput
-							value="Cafe/Coffee Shop"
+							value={establishmentDetails?.establishment_type}
 							isReadOnly
 							label="Establishment Type"
 						/>
@@ -44,12 +48,20 @@ const TouristHome = () => {
 				<div className="my-8">
 					<p className="font-semibold mb-2">LOCATION</p>
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-						<TextInput value="Poblacion" isReadOnly label="Barangay" />
-						<TextInput value="Sagay" isReadOnly label="Municipality" />
+						<TextInput
+							value={establishmentDetails?.barangay}
+							isReadOnly
+							label="Barangay"
+						/>
+						<TextInput
+							value={establishmentDetails?.city_municipality}
+							isReadOnly
+							label="Municipality"
+						/>
 					</div>
 					<div className="grid grid-cols-1 mt-2">
 						<TextInput
-							value="Chiu Bldg., Poblacion, Sagay, Camiguin"
+							value={establishmentDetails?.complete_address}
 							isReadOnly
 							label="Complete Address"
 						/>
@@ -58,7 +70,11 @@ const TouristHome = () => {
 				<div className="my-8">
 					<p className="font-semibold mb-2">CONTACT INFORMATION</p>
 					<div className="w-full">
-						<TextInput value="09567891234" isReadOnly label="Contact Number" />
+						<TextInput
+							value={establishmentDetails?.contact_number}
+							isReadOnly
+							label="Contact Number"
+						/>
 					</div>
 				</div>
 
@@ -70,4 +86,4 @@ const TouristHome = () => {
 	);
 };
 
-export default TouristHome;
+export default EstablishmentHome;
