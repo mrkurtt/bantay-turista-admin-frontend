@@ -13,6 +13,12 @@ export interface IUser {
 	role?: 'tourist' | 'establishment' | 'admin';
 }
 
+export interface ILog {
+	tourist_id?: ITourist;
+	establishment_id?: IEstablishment;
+	createdAt?: string;
+}
+
 export interface ITourist {
 	first_name: string;
 	last_name: string;
