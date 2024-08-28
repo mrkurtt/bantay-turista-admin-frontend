@@ -62,7 +62,7 @@ const TouristsTable = () => {
 								>
 									{tourist?.qr_code}
 								</th>
-								<td className="px-6 py-4">
+								<td className="max-w-24 px-6 py-4">
 									<img src={`${tourist?.photo_url}`} alt="tourist" />
 								</td>
 								<td className="px-6 py-4">{tourist?.first_name}</td>
