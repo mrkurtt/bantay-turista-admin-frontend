@@ -43,6 +43,7 @@ export interface IEstablishment {
 export interface IComplaint {
 	userId?: string;
 	description?: string;
+	tourist_id?: ITourist;
 	resolved?: boolean;
 }
 

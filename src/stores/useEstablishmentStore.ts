@@ -37,10 +37,9 @@ export const useEstablishmentStore = create<
 	},
 	getEstablishments: async () => {
 		const allEstablishments = await getAllEstablishments();
-		apiResponseHandler(allEstablishments);
 
 		set(() => ({
-			establishments: allEstablishments,
+			establishments: allEstablishments.establishments,
 		}));
 
 		return allEstablishments;

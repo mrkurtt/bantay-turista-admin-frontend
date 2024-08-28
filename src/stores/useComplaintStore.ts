@@ -44,7 +44,10 @@ export const useComplaintStore = create<ComplaintState & ComplaintActions>(
 			}));
 
 			const getAllComplaintsResponse = await getComplaints();
-			apiResponseHandler(getAllComplaintsResponse);
+
+			set(() => ({
+				complaints: getAllComplaintsResponse.complaints,
+			}));
 
 			set(() => ({
 				complaintLoading: false,

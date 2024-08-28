@@ -18,18 +18,18 @@ export type TouristActions = {
 export const useTouristStore = create<TouristState & TouristActions>((set) => ({
 	getTourists: async () => {
 		const allTourists = await getAllTourists();
-		apiResponseHandler(allTourists);
 
 		set(() => ({
-			tourists: allTourists,
+			tourists: allTourists.tourists,
 		}));
+
+		console.log(allTourists);
 
 		return allTourists;
 	},
 
 	getTouristDetails: async (userId: string | undefined) => {
 		const touristData = await getTourist(userId);
-		// apiResponseHandler(touristData);
 
 		set(() => ({
 			touristDetails: touristData.tourist,

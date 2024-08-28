@@ -1,81 +1,83 @@
 'use client';
-import React from 'react';
-import {
-	Table,
-	TableHeader,
-	TableColumn,
-	TableBody,
-	TableRow,
-	TableCell,
-	getKeyValue,
-} from '@nextui-org/react';
+
+import React, { useEffect } from 'react';
 import BreadCrumbs from '../BreadCrumbs/BreadCrumbs';
-
-const rows = [
-	{
-		key: '1',
-		name: 'Tony Reichert',
-		role: 'CEO',
-		status: 'Active',
-	},
-	{
-		key: '2',
-		name: 'Zoey Lang',
-		role: 'Technical Lead',
-		status: 'Paused',
-	},
-	{
-		key: '3',
-		name: 'Jane Fisher',
-		role: 'Senior Developer',
-		status: 'Active',
-	},
-	{
-		key: '4',
-		name: 'William Howard',
-		role: 'Community Manager',
-		status: 'Vacation',
-	},
-];
-
-const columns = [
-	{
-		key: 'name',
-		label: 'NAME',
-	},
-	{
-		key: 'role',
-		label: 'ROLE',
-	},
-	{
-		key: 'status',
-		label: 'STATUS',
-	},
-];
+import { useTouristStore } from '@/stores/useTouristStore';
 
 const TouristsTable = () => {
+	const { getTourists, tourists } = useTouristStore();
+
+	useEffect(() => {
+		getTourists();
+	}, []);
+
 	return (
 		<>
 			<div className="mb-4">
 				<BreadCrumbs location="Tourists" />
 			</div>
 
-			<Table aria-label="Example table with dynamic content">
-				<TableHeader columns={columns}>
-					{(column) => (
-						<TableColumn key={column.key}>{column.label}</TableColumn>
-					)}
-				</TableHeader>
-				<TableBody items={rows}>
-					{(item) => (
-						<TableRow key={item.key}>
-							{(columnKey) => (
-								<TableCell>{getKeyValue(item, columnKey)}</TableCell>
-							)}
-						</TableRow>
-					)}
-				</TableBody>
-			</Table>
+			<div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+				<table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+					<thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+						<tr>
+							<th scope="col" className="px-6 py-3">
+								QR CODE
+							</th>
+							<th scope="col" className="px-6 py-3">
+								PHOTO
+							</th>
+							<th scope="col" className="px-6 py-3">
+								FIRST NAME
+							</th>
+							<th scope="col" className="px-6 py-3">
+								LAST NAME
+							</th>
+							<th scope="col" className="px-6 py-3">
+								GENDER
+							</th>
+							<th scope="col" className="px-6 py-3">
+								BIRTHDATE
+							</th>
+							<th scope="col" className="px-6 py-3">
+								NATIONALITY
+							</th>
+							<th scope="col" className="px-6 py-3">
+								COUNTRY
+							</th>
+							<th scope="col" className="px-6 py-3">
+								PROVINCE
+							</th>
+							<th scope="col" className="px-6 py-3">
+								CITY/MUNICIPALITY
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						{tourists?.map((tourist) => (
+							<tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+								<th
+									scope="row"
+									className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+								>
+									{tourist?.qr_code}
+								</th>
+								<td className="px-6 py-4">
+									<img src={`${tourist?.photo_url}`} alt="tourist" />
+								</td>
+								<td className="px-6 py-4">{tourist?.first_name}</td>
+								<td className="px-6 py-4">{tourist?.last_name}</td>
+								<td className="px-6 py-4">{tourist?.gender}</td>
+								<td className="px-6 py-4">{tourist?.birthdate}</td>
+								<td className="px-6 py-4">{tourist?.nationality}</td>
+								<td className="px-6 py-4">{tourist?.country}</td>
+								<td className="px-6 py-4">{tourist?.province}</td>
+								<td className="px-6 py-4">{tourist?.city_municipality}</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			</div>
 		</>
 	);
 };

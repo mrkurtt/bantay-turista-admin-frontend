@@ -9,6 +9,8 @@ import { IoQrCode } from 'react-icons/io5';
 import { IoMdPin } from 'react-icons/io';
 import { FaSquarePhone } from 'react-icons/fa6';
 import { TbMessageReportFilled } from 'react-icons/tb';
+import { useRouter } from 'next/navigation';
+import { useAuthStore } from '@/stores/useAuthStore';
 
 const sidebarItems = [
 	{
@@ -31,19 +33,27 @@ const sidebarItems = [
 		icon: <TbMessageReportFilled size={20} className="text-primary" />,
 		href: '/admin/complaints',
 	},
-	{
-		title: 'VA: Tourist Spots',
-		icon: <IoMdPin size={20} className="text-primary" />,
-		href: '/admin/tourist-spots',
-	},
-	{
-		title: 'VA: Emergency Contacts',
-		icon: <FaSquarePhone size={20} className="text-primary" />,
-		href: '/admin/emergency-contacts',
-	},
+	// {
+	// 	title: 'VA: Tourist Spots',
+	// 	icon: <IoMdPin size={20} className="text-primary" />,
+	// 	href: '/admin/tourist-spots',
+	// },
+	// {
+	// 	title: 'VA: Emergency Contacts',
+	// 	icon: <FaSquarePhone size={20} className="text-primary" />,
+	// 	href: '/admin/emergency-contacts',
+	// },
 ];
 
 const AdminNav = () => {
+	const router = useRouter();
+	const { onLogout } = useAuthStore();
+
+	const handleLogout = () => {
+		onLogout();
+		router.push('/');
+	};
+
 	return (
 		<div>
 			<nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200">
@@ -78,7 +88,7 @@ const AdminNav = () => {
 						<div className="flex items-center">
 							<div className="flex items-center ms-3">
 								<div>
-									<PlainBtn label="Logout" />
+									<PlainBtn onClickHandler={handleLogout} label="Logout" />
 								</div>
 							</div>
 						</div>

@@ -70,6 +70,7 @@ const TouristHome = () => {
 								}}
 							/>
 						</div>
+						<p className="font-semibold text-primary">{`${touristDetails?.qr_code}`}</p>
 					</div>
 				</div>
 				<div className="my-8">
