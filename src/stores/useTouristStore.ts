@@ -35,8 +35,6 @@ export const useTouristStore = create<TouristState & TouristActions>((set) => ({
 			touristDetails: touristData.tourist,
 		}));
 
-		console.log(touristData.tourist);
-
 		return touristData;
 	},
 

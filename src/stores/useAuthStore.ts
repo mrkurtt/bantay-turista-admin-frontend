@@ -6,7 +6,6 @@ import {
 	TRegData,
 } from '@/utils/interfaces';
 import { apiResponseHandler } from '@/utils/shared';
-import { DateValue } from '@nextui-org/react';
 import { create } from 'zustand';
 import {
 	login,
