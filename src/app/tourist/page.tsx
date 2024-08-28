@@ -54,7 +54,6 @@ const TouristHome = () => {
 					<div className="flex flex-col items-center justify-center gap-y-2">
 						<div className="border p-4 rounded-sm">
 							<Image
-								id="qr-code"
 								text={`${touristDetails?.qr_code}`}
 								options={{
 									type: 'image/png',
