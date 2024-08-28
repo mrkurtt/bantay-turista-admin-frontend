@@ -13,6 +13,7 @@ import {
 import CustomModal from '@/components/Modal/CustomModal';
 import GradientBtn from '@/components/Button/GradientBtn';
 import AppLogo from './AppLogo';
+import PlainBtn from '../Button/PlainBtn';
 
 const Nav = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -48,6 +49,7 @@ const Nav = () => {
 						>
 							Register
 						</Button>
+						<PlainBtn as={Link} href="/test" label="Test Entry Log" />
 					</div>
 				</NavbarItem>
 			</NavbarContent>

@@ -15,32 +15,32 @@ import { useAuthStore } from '@/stores/useAuthStore';
 const sidebarItems = [
 	{
 		title: 'Entry Logs',
-		icon: <IoQrCode size={20} className="text-primary" />,
+		icon: <IoQrCode size={20} className="text-gray-700" />,
 		href: '/admin',
 	},
 	{
 		title: 'Tourists',
-		icon: <GiSchoolBag size={20} className="text-primary" />,
+		icon: <GiSchoolBag size={20} className="text-gray-700" />,
 		href: '/admin/tourists',
 	},
 	{
 		title: 'Establishments',
-		icon: <FaStoreAlt size={20} className="text-primary" />,
+		icon: <FaStoreAlt size={20} className="text-gray-700" />,
 		href: '/admin/establishments',
 	},
 	{
 		title: 'Complaints',
-		icon: <TbMessageReportFilled size={20} className="text-primary" />,
+		icon: <TbMessageReportFilled size={20} className="text-gray-700" />,
 		href: '/admin/complaints',
 	},
 	// {
 	// 	title: 'VA: Tourist Spots',
-	// 	icon: <IoMdPin size={20} className="text-primary" />,
+	// 	icon: <IoMdPin size={20} className="text-gray-700" />,
 	// 	href: '/admin/tourist-spots',
 	// },
 	// {
 	// 	title: 'VA: Emergency Contacts',
-	// 	icon: <FaSquarePhone size={20} className="text-primary" />,
+	// 	icon: <FaSquarePhone size={20} className="text-gray-700" />,
 	// 	href: '/admin/emergency-contacts',
 	// },
 ];

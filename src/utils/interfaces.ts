@@ -20,6 +20,7 @@ export interface ILog {
 }
 
 export interface ITourist {
+	_id?: string;
 	first_name: string;
 	last_name: string;
 	email_address: string;
@@ -35,6 +36,7 @@ export interface ITourist {
 }
 
 export interface IEstablishment {
+	_id?: string;
 	establishment_name: string;
 	establishment_type: string;
 	city_municipality: string;

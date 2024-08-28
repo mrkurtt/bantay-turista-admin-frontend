@@ -15,6 +15,7 @@ import {
 	uploadImage,
 } from '@/api/auth.api';
 import Cookies from 'js-cookie';
+import toast from 'react-hot-toast';
 
 export type AuthState = {
 	loginLoading: boolean;
@@ -84,6 +85,9 @@ export const useAuthStore = create<AuthState & AuthActions>((set) => ({
 	establishmentRegLoading: false,
 
 	onLogout: () => {
+		toast('Logging out...', {
+			duration: 1000,
+		});
 		Cookies.remove('access_token');
 		Cookies.remove('user_id');
 	},
