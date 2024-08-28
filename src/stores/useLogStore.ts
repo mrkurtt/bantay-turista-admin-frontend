@@ -3,7 +3,7 @@ import { IEstablishment, ILog, ITourist } from '@/utils/interfaces';
 import { apiResponseHandler } from '@/utils/shared';
 import { create } from 'zustand';
 
-interface ILogTest {
+export interface ILogTest {
 	tourist_id?: string;
 	establishment_id?: string;
 }
