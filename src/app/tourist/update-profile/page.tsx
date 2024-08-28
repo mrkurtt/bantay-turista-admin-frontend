@@ -14,8 +14,8 @@ import { useRouter } from 'next/navigation';
 
 const UpdateProfile = () => {
 	const router = useRouter();
-	const [updateData, setUpdateData] = useState({});
 
+	const [updateData, setUpdateData] = useState({});
 	const [tourist, setTourist] = useState({
 		first_name: '',
 		last_name: '',
@@ -58,10 +58,6 @@ const UpdateProfile = () => {
 			router.push('/tourist');
 		}
 	};
-
-	useEffect(() => {
-		console.log(updateData);
-	}, [updateData]);
 
 	useEffect(() => {
 		setTourist({
