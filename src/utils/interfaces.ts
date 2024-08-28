@@ -40,6 +40,12 @@ export interface IEstablishment {
 	user_id: string;
 }
 
+export interface IComplaint {
+	userId?: string;
+	description?: string;
+	resolved?: boolean;
+}
+
 export interface IGradientBtnProps {
 	label: string;
 	isDisabled?: boolean;
