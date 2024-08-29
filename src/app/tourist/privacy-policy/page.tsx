@@ -1,7 +1,7 @@
 'use client';
 
 import PrivacyPolicy from '@/components/PrivacyPolicy';
-import isAuth from '@/utils/isAuth';
+import isAuth from '@/components/isAuth';
 import React from 'react';
 
 const TouristPrivacyPolicy = () => {

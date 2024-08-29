@@ -8,7 +8,7 @@ import { useComplaintStore } from '@/stores/useComplaintStore';
 import { Textarea } from '@nextui-org/react';
 import React, { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
-import isAuth from '@/utils/isAuth';
+import isAuth from '@/components/isAuth';
 
 const Complaints = () => {
 	const [complaint, setComplaint] = useState('');

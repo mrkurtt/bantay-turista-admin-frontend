@@ -1,7 +1,7 @@
 'use client';
 
 import EstablishmentsTable from '@/components/Table/EstablishmentsTable';
-import isAuth from '@/utils/isAuth';
+import isAuth from '@/components/isAuth';
 import React from 'react';
 
 const EstablishmentList = () => {

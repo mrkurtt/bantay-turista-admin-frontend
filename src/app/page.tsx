@@ -2,7 +2,7 @@
 
 import LoginForm from '@/forms/LoginForm';
 import Nav from '@/components/Navbar/Nav';
-import isAuth from '@/utils/isAuth';
+import isAuth from '@/components/isAuth';
 
 const Home = () => {
 	return (

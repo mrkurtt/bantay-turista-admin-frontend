@@ -1,7 +1,7 @@
 'use client';
 
 import ComplaintsTable from '@/components/Table/ComplaintsTable';
-import isAuth from '@/utils/isAuth';
+import isAuth from '@/components/isAuth';
 import React from 'react';
 
 const ComplaintsList = () => {

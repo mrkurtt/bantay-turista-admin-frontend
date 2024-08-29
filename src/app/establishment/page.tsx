@@ -10,7 +10,7 @@ import { useEstablishmentStore } from '@/stores/useEstablishmentStore';
 import Link from 'next/link';
 import React, { useEffect } from 'react';
 import Cookies from 'js-cookie';
-import isAuth from '@/utils/isAuth';
+import isAuth from '@/components/isAuth';
 
 const EstablishmentHome = () => {
 	const { getEstablishmentDetails, establishmentDetails } =

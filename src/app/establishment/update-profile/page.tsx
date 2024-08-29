@@ -10,7 +10,7 @@ import React, { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 import { useAuthStore } from '@/stores/useAuthStore';
-import isAuth from '@/utils/isAuth';
+import isAuth from '@/components/isAuth';
 
 const UpdateProfile = () => {
 	const router = useRouter();
