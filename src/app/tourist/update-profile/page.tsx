@@ -11,6 +11,7 @@ import React, { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import { useAuthStore } from '@/stores/useAuthStore';
 import { useRouter } from 'next/navigation';
+import isAuth from '@/utils/isAuth';
 
 const UpdateProfile = () => {
 	const router = useRouter();
@@ -252,4 +253,4 @@ const UpdateProfile = () => {
 	);
 };
 
-export default UpdateProfile;
+export default isAuth(UpdateProfile);

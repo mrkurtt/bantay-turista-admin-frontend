@@ -10,6 +10,7 @@ import { useEstablishmentStore } from '@/stores/useEstablishmentStore';
 import Link from 'next/link';
 import React, { useEffect } from 'react';
 import Cookies from 'js-cookie';
+import isAuth from '@/utils/isAuth';
 
 const EstablishmentHome = () => {
 	const { getEstablishmentDetails, establishmentDetails } =
@@ -86,4 +87,4 @@ const EstablishmentHome = () => {
 	);
 };
 
-export default EstablishmentHome;
+export default isAuth(EstablishmentHome);

@@ -16,8 +16,10 @@ import {
 } from '@/api/auth.api';
 import Cookies from 'js-cookie';
 import toast from 'react-hot-toast';
+import { jwtDecode } from 'jwt-decode';
 
 export type AuthState = {
+	isAuthenticated: boolean;
 	loginLoading: boolean;
 	signupLoading: boolean;
 	touristRegLoading: boolean;
@@ -42,9 +44,12 @@ export type AuthActions = {
 	) => void;
 	uploadToCloudinary: (file: File) => Promise<any>;
 	onLogout: () => void;
+	checkAuth: () => Object;
 };
 
 export const useAuthStore = create<AuthState & AuthActions>((set) => ({
+	isAuthenticated: false,
+
 	touristRegData: {
 		firstName: '',
 		lastName: '',
@@ -83,6 +88,19 @@ export const useAuthStore = create<AuthState & AuthActions>((set) => ({
 	signupLoading: false,
 	touristRegLoading: false,
 	establishmentRegLoading: false,
+
+	checkAuth: () => {
+		const token = Cookies.get('access_token');
+		const decoded = jwtDecode(`${token}`);
+
+		if (token) {
+			set(() => ({
+				isAuthenticated: true,
+			}));
+		}
+
+		return decoded;
+	},
 
 	onLogout: () => {
 		toast('Logging out...', {

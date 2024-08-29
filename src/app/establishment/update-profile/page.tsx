@@ -3,7 +3,6 @@
 import GradientBtn from '@/components/Button/GradientBtn';
 import FormContainer from '@/components/Container/FormContainer';
 import Container from '@/components/Container/LayoutContainer';
-import CustomDatePicker from '@/components/Dropdown/CustomDatePicker';
 import URLBasedImage from '@/components/Image/CustomImage';
 import TextInput from '@/components/Input/TextInput';
 import { useEstablishmentStore } from '@/stores/useEstablishmentStore';
@@ -11,6 +10,7 @@ import React, { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 import { useAuthStore } from '@/stores/useAuthStore';
+import isAuth from '@/utils/isAuth';
 
 const UpdateProfile = () => {
 	const router = useRouter();
@@ -232,4 +232,4 @@ const UpdateProfile = () => {
 	);
 };
 
-export default UpdateProfile;
+export default isAuth(UpdateProfile);

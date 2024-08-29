@@ -1,4 +1,7 @@
+'use client';
+
 import EntryLogsTable from '@/components/Table/EntryLogsTable';
+import isAuth from '@/utils/isAuth';
 import React from 'react';
 
 const AdminHome = () => {
@@ -9,4 +12,4 @@ const AdminHome = () => {
 	);
 };
 
-export default AdminHome;
+export default isAuth(AdminHome);

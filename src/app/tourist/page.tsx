@@ -13,6 +13,7 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import { dateParser } from '@/utils/helper';
+import isAuth from '@/utils/isAuth';
 
 const TouristHome = () => {
 	const { Canvas, Image } = useQRCode();
@@ -133,4 +134,4 @@ const TouristHome = () => {
 	);
 };
 
-export default TouristHome;
+export default isAuth(TouristHome);

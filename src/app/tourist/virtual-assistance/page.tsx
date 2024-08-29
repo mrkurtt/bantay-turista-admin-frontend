@@ -1,6 +1,9 @@
+'use client';
+
 import Container from '@/components/Container/LayoutContainer';
 import EmergencyContacts from '@/components/VirtualAssistance/EmergencyContacts';
 import TouristSpots from '@/components/VirtualAssistance/TouristSpots';
+import isAuth from '@/utils/isAuth';
 import React from 'react';
 
 const VirtualAssistance = () => {
@@ -14,4 +17,4 @@ const VirtualAssistance = () => {
 	);
 };
 
-export default VirtualAssistance;
+export default isAuth(VirtualAssistance);

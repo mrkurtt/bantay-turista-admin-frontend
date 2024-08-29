@@ -1,4 +1,7 @@
+'use client';
+
 import SpotsTable from '@/components/Table/SpotsTable';
+import isAuth from '@/utils/isAuth';
 import React from 'react';
 
 const TouristSpotList = () => {
@@ -9,4 +12,4 @@ const TouristSpotList = () => {
 	);
 };
 
-export default TouristSpotList;
+export default isAuth(TouristSpotList);

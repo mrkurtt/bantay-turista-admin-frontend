@@ -1,4 +1,7 @@
+'use client';
+
 import ContactsTable from '@/components/Table/ContactsTable';
+import isAuth from '@/utils/isAuth';
 import React from 'react';
 
 const EmergencyContactList = () => {
@@ -9,4 +12,4 @@ const EmergencyContactList = () => {
 	);
 };
 
-export default EmergencyContactList;
+export default isAuth(EmergencyContactList);
