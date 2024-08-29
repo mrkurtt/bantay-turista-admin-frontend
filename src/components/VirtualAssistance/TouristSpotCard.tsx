@@ -17,7 +17,7 @@ const TouristSpotCard = ({
 					unoptimized
 					width={100}
 					height={100}
-					className="w-full"
+					className="w-full h-full"
 				/>
 
 				<div className="mt-2">

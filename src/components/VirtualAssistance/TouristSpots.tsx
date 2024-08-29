@@ -5,63 +5,74 @@ import TouristSpotCard from './TouristSpotCard';
 
 const spots = [
 	{
-		_id: '66bd5566679f7c8e5e24031a',
-		name: 'Sunset Beach',
-		description: 'A beautiful beach with stunning sunsets.',
-		photo_url: 'https://gttp.imgix.net/223693/x/0/',
-		createdAt: '2024-08-15T01:09:58.757Z',
-		updatedAt: '2024-08-15T01:09:58.757Z',
-		__v: 0,
+		name: 'White Island',
+		description:
+			'A pristine, uninhabited white sandbar offering stunning views of Mt. Hibok-Hibok.',
+		photo_url:
+			'https://www.nopostcode.com/wp-content/uploads/2022/05/White-Island-Camiguin-14.jpg',
 	},
 	{
-		_id: '66bd55c6679f7c8e5e240326',
-		name: 'Mountain View',
+		name: 'Katibawasan Falls',
 		description:
-			'A serene spot offering panoramic views of the surrounding mountains.',
-		photo_url: 'https://gttp.imgix.net/223693/x/0/',
-		createdAt: '2024-08-15T01:11:34.890Z',
-		updatedAt: '2024-08-15T01:11:34.890Z',
-		__v: 0,
+			'A majestic waterfall cascading from 250 feet, surrounded by lush greenery.',
+		photo_url:
+			'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQryoUJNgdDyd8-UecPVaA9y74Rm-K0b4usEw&s',
 	},
 	{
-		_id: '66bd55f1679f7c8e5e240329',
-		name: 'Old Town Square',
+		name: 'Sunken Cemetery',
 		description:
-			'A historic square in the heart of the city, known for its beautiful architecture and historical significance.',
-		photo_url: 'https://gttp.imgix.net/223693/x/0/',
-		createdAt: '2024-08-15T01:12:17.612Z',
-		updatedAt: '2024-08-15T01:12:17.612Z',
-		__v: 0,
+			'A cemetery submerged by volcanic activity, marked by a large cross rising from the sea.',
+		photo_url:
+			'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2VC6HMmwVZjFN6_IcDXPF1l4S7lFcVwMiAw&s',
 	},
 	{
-		_id: '66bd55fa679f7c8e5e24032b',
-		name: 'Lake View',
+		name: 'Tuasan Falls',
 		description:
-			'A serene lake with crystal-clear waters, perfect for kayaking and picnicking.',
-		photo_url: 'https://gttp.imgix.net/223693/x/0/',
-		createdAt: '2024-08-15T01:12:26.160Z',
-		updatedAt: '2024-08-15T01:13:00.599Z',
-		__v: 0,
+			'A hidden waterfall with a serene, natural pool, perfect for swimming.',
+		photo_url:
+			'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/93/e5/a4/photo0jpg.jpg?w=600&h=500&s=1',
 	},
 	{
-		_id: '66bd5627679f7c8e5e240331',
-		name: 'Crystal Lake',
+		name: 'Mantigue Island',
 		description:
-			'A serene lake with crystal-clear waters, perfect for kayaking and picnicking.',
-		photo_url: 'https://gttp.imgix.net/223693/x/0/',
-		createdAt: '2024-08-15T01:13:11.946Z',
-		updatedAt: '2024-08-15T01:13:11.946Z',
-		__v: 0,
+			'A small island with white sandy beaches and a rich marine sanctuary for snorkeling.',
+		photo_url:
+			'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiXx23072bNLuKqOUOjJO0_dZmyden2SLbXg&s',
 	},
 	{
-		_id: '66bd5627679f7c8e5e240331',
-		name: 'Crystal Lake',
+		name: 'Ardent Hot Spring',
 		description:
-			'A serene lake with crystal-clear waters, perfect for kayaking and picnicking.',
-		photo_url: 'https://gttp.imgix.net/223693/x/0/',
-		createdAt: '2024-08-15T01:13:11.946Z',
-		updatedAt: '2024-08-15T01:13:11.946Z',
-		__v: 0,
+			'A natural hot spring nestled in a tropical forest, ideal for relaxation.',
+		photo_url:
+			'https://mambajao.gov.ph/wp-content/uploads/2022/09/ardent-1.jpg',
+	},
+	{
+		name: 'Giant Clam Sanctuary',
+		description:
+			'A sanctuary home to giant clams and vibrant coral reefs, offering guided tours.',
+		photo_url:
+			'https://i.pinimg.com/736x/bf/ae/b1/bfaeb16d3d95a851f06d9677f3af9ffc.jpg',
+	},
+	{
+		name: 'Guiob Church Ruins',
+		description:
+			'The remains of an old Spanish church destroyed by volcanic eruptions in the 1870s.',
+		photo_url:
+			'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZz_xkGyOxz7qbMlqg-wRuE4iWVyQFARVChXo2eNB96-VkQ0jUNROzkKPTjL0ZVbJKWDU&usqp=CAU',
+	},
+	{
+		name: 'Mt. Hibok-Hibok',
+		description:
+			'An active stratovolcano offering challenging hikes with rewarding views of the island.',
+		photo_url:
+			'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/8d/d2/69/mt-hibok-hibok.jpg?w=1200&h=-1&s=1',
+	},
+	{
+		name: 'Sto. Niño Cold Spring',
+		description:
+			'A refreshing cold spring with crystal-clear waters and lush surroundings.',
+		photo_url:
+			'https://images.hive.blog/1200x630/https://cdn.liketu.com/media/godlovermel25/images/clhqacyqq00pr4nsz0qv43a5i_2/clhqacyqq00pr4nsz0qv43a5i_2.webp',
 	},
 ];
 
