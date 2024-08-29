@@ -1,7 +1,10 @@
+'use client';
+
 import LoginForm from '@/forms/LoginForm';
 import Nav from '@/components/Navbar/Nav';
+import isAuth from '@/utils/isAuth';
 
-export default function Home() {
+const Home = () => {
 	return (
 		<main>
 			<Nav />
@@ -10,4 +13,6 @@ export default function Home() {
 			</div>
 		</main>
 	);
-}
+};
+
+export default isAuth(Home);

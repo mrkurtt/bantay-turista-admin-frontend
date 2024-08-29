@@ -12,7 +12,9 @@ import isAuth from '@/utils/isAuth';
 
 const Complaints = () => {
 	const [complaint, setComplaint] = useState('');
-	const { sendComplaint, complaintLoading } = useComplaintStore();
+	const { sendComplaint, complaintLoading } = useComplaintStore(
+		(state) => state
+	);
 
 	const handleSubmit = async () => {
 		if (complaint !== '') {

@@ -14,7 +14,7 @@ import isAuth from '@/utils/isAuth';
 
 const EstablishmentHome = () => {
 	const { getEstablishmentDetails, establishmentDetails } =
-		useEstablishmentStore();
+		useEstablishmentStore((state) => state);
 
 	useEffect(() => {
 		getEstablishmentDetails(`${Cookies.get('user_id')}`);

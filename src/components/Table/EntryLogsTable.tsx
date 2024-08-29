@@ -6,7 +6,7 @@ import { useLogStore } from '@/stores/useLogStore';
 import moment from 'moment';
 
 const EntryLogsTable = () => {
-	const { getAllLogs, logs } = useLogStore();
+	const { getAllLogs, logs } = useLogStore((state) => state);
 
 	useEffect(() => {
 		getAllLogs();

@@ -47,7 +47,7 @@ const sidebarItems = [
 
 const AdminNav = () => {
 	const router = useRouter();
-	const { onLogout } = useAuthStore();
+	const { onLogout } = useAuthStore((state) => state);
 
 	const handleLogout = () => {
 		onLogout();

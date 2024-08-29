@@ -16,9 +16,11 @@ const Test = () => {
 		onSelectEstablishment,
 		selectedTourist,
 		selectedEstablishment,
-	} = useLogStore();
-	const { getTourists, tourists } = useTouristStore();
-	const { getEstablishments, establishments } = useEstablishmentStore();
+	} = useLogStore((state) => state);
+	const { getTourists, tourists } = useTouristStore((state) => state);
+	const { getEstablishments, establishments } = useEstablishmentStore(
+		(state) => state
+	);
 
 	useEffect(() => {
 		getTourists();

@@ -32,13 +32,13 @@ const UpdateProfile = () => {
 		onUploadEstablishmentImage,
 		establishmentRegData,
 		uploadToCloudinary,
-	} = useAuthStore();
+	} = useAuthStore((state) => state);
 
 	const {
 		getEstablishmentDetails,
 		establishmentDetails,
 		updateEstablishmentDetails,
-	} = useEstablishmentStore();
+	} = useEstablishmentStore((state) => state);
 
 	const handleSubmit = async () => {
 		let data = { ...updateData };

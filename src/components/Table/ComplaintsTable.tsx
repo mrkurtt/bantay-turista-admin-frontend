@@ -5,7 +5,7 @@ import BreadCrumbs from '../BreadCrumbs/BreadCrumbs';
 import { useComplaintStore } from '@/stores/useComplaintStore';
 
 const ComplaintsTable = () => {
-	const { getAllComplaints, complaints } = useComplaintStore();
+	const { getAllComplaints, complaints } = useComplaintStore((state) => state);
 	useEffect(() => {
 		getAllComplaints();
 	}, []);

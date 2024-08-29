@@ -5,7 +5,7 @@ import BreadCrumbs from '../BreadCrumbs/BreadCrumbs';
 import { useTouristStore } from '@/stores/useTouristStore';
 
 const TouristsTable = () => {
-	const { getTourists, tourists } = useTouristStore();
+	const { getTourists, tourists } = useTouristStore((state) => state);
 
 	useEffect(() => {
 		getTourists();

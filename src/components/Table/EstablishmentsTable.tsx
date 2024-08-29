@@ -5,7 +5,9 @@ import BreadCrumbs from '../BreadCrumbs/BreadCrumbs';
 import { useEstablishmentStore } from '@/stores/useEstablishmentStore';
 
 const EstablishmentsTable = () => {
-	const { getEstablishments, establishments } = useEstablishmentStore();
+	const { getEstablishments, establishments } = useEstablishmentStore(
+		(state) => state
+	);
 
 	useEffect(() => {
 		getEstablishments();

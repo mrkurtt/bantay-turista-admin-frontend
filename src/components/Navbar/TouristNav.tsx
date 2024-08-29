@@ -22,7 +22,7 @@ const TouristNav = () => {
 	};
 
 	const router = useRouter();
-	const { onLogout } = useAuthStore();
+	const { onLogout } = useAuthStore((state) => state);
 
 	const handleLogout = () => {
 		onLogout();
