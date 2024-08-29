@@ -1,27 +1,39 @@
 'use client';
 
-import { useAuthStore } from '@/stores/useAuthStore';
-import { redirect } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
+import Cookies from 'js-cookie';
+import { jwtDecode } from 'jwt-decode';
+import { useAuthStore } from '@/stores/useAuthStore';
 
-const isAuthenticated = false;
+const isAuth = (WrappedComponent: React.ComponentType<any>) => {
+	const ProtectRoute: React.FC = (props) => {
+		const router = useRouter();
 
-export default function isAuth(Component: any) {
-	// const {checkAuth, isAuthenticated} = useAuthStore()
+		let isAuthenticated = false;
+		const token = Cookies.get('access_token');
+		const role = Cookies.get('role');
 
-	return function IsAuth(props: any) {
-		const auth = isAuthenticated;
-
-		useEffect(() => {
-			if (!auth) {
-				return redirect('/');
-			}
-		}, []);
-
-		if (!auth) {
-			return null;
+		if (token) {
+			isAuthenticated = true;
 		}
 
-		return <Component {...props} />;
+		useEffect(() => {
+			if (!isAuthenticated) {
+				router.push('/');
+			} else {
+				router.push(`/${role}`);
+			}
+		}, [isAuthenticated]);
+
+		return <WrappedComponent {...props} />;
 	};
-}
+
+	ProtectRoute.displayName = `isAuth(${
+		WrappedComponent.displayName || WrappedComponent.name
+	})`;
+
+	return ProtectRoute;
+};
+
+export default isAuth;

@@ -108,6 +108,7 @@ export const useAuthStore = create<AuthState & AuthActions>((set) => ({
 		});
 		Cookies.remove('access_token');
 		Cookies.remove('user_id');
+		Cookies.remove('role');
 	},
 
 	submitLogin: async (user: IUser) => {

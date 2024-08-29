@@ -22,6 +22,11 @@ export const login = async (user: IUser) => {
 			secure: true,
 		});
 
+		Cookies.set('role', data.role, {
+			expires: 7,
+			secure: true,
+		});
+
 		Cookies.set('user_id', data.user_id, {
 			expires: 7,
 			secure: true,
