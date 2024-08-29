@@ -1,14 +1,15 @@
 'use client';
 
-import { redirect, useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import Cookies from 'js-cookie';
-import { jwtDecode } from 'jwt-decode';
-import { useAuthStore } from '@/stores/useAuthStore';
 
 const isAuth = (WrappedComponent: React.ComponentType<any>) => {
 	const ProtectRoute: React.FC = (props) => {
 		const router = useRouter();
+		const pathname = usePathname();
+
+		console.log(pathname.split('/'));
 
 		let isAuthenticated = false;
 		const token = Cookies.get('access_token');
@@ -22,7 +23,11 @@ const isAuth = (WrappedComponent: React.ComponentType<any>) => {
 			if (!isAuthenticated) {
 				router.push('/');
 			} else if (token && role !== undefined) {
-				router.push(`/${role}`);
+				if (pathname.split('/').length < 3) {
+					router.push(`/${role}`);
+				} else {
+					router.push(`${pathname}`);
+				}
 			}
 		}, [isAuthenticated]);
 
