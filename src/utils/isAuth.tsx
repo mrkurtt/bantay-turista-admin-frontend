@@ -21,7 +21,7 @@ const isAuth = (WrappedComponent: React.ComponentType<any>) => {
 		useEffect(() => {
 			if (!isAuthenticated) {
 				router.push('/');
-			} else {
+			} else if (token && role !== undefined) {
 				router.push(`/${role}`);
 			}
 		}, [isAuthenticated]);
