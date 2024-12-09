@@ -8,8 +8,10 @@ import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import { MouseEventHandler } from 'react';
 
 export interface IUser {
-	username?: string;
+	name?: string;
+	email?: string;
 	password?: string;
+	user_type?: number;
 	role?: 'tourist' | 'establishment' | 'admin';
 }
 
@@ -166,18 +168,21 @@ export interface ITouristSpotCardProps {
 }
 
 export interface TRegData {
-	firstName: string;
-	lastName: string;
+	first_name: string;
+	last_name: string;
 	gender: string;
 	nationality: string;
-	birthdate: string;
+	date_of_birth: string;
+	address_1: string;
+	address_2: string;
+	contact_number: string;
 	country: string;
-	province: string;
-	municipality: string;
+	state_province: string;
+	city_municipality: string;
 	photoUrl: string;
 	image: string | undefined;
 	imageFile: File | undefined;
-	emailAddress: string;
+	email: string;
 	username: string;
 	password: string;
 	confirmPassword: string;

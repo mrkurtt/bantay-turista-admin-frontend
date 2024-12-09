@@ -11,9 +11,9 @@ export const apiErrorHandler = (error: any) => {
 };
 
 export const apiResponseHandler = (response: any) => {
-	if (!response.success) {
-		toast.error(response.message);
-	} else if (response.success) {
+	if (response.status || response.success) {
 		toast.success(response.message);
+	} else {
+		toast.error(response.message);
 	}
 };

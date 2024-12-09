@@ -11,7 +11,7 @@ const LoginForm = () => {
 	const [isVisible, setIsVisible] = React.useState(false);
 	const toggleVisibility = () => setIsVisible(!isVisible);
 
-	const [username, setUsername] = useState('');
+	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
 	const router = useRouter();
@@ -27,9 +27,9 @@ const LoginForm = () => {
 			<div className="flex flex-col my-8">
 				<Input
 					className="mb-4"
-					label="Username"
+					label="Email Address"
 					variant="bordered"
-					onChange={(e) => setUsername(e.target.value)}
+					onChange={(e) => setEmail(e.target.value)}
 				/>
 				<Input
 					label="Password"
@@ -57,8 +57,9 @@ const LoginForm = () => {
 				fullWidth={true}
 				isLoading={loginLoading}
 				onClickHandler={async () =>
-					await submitLogin({ username, password }).then((res) => {
-						if (res.success) {
+					await submitLogin({ email, password, user_type: 3 }).then((res) => {
+						// console.log(res);
+						if (res.status) {
 							router.push(`/${res.role}`);
 						}
 					})

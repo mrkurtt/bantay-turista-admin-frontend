@@ -52,21 +52,22 @@ const Step3 = () => {
 			const photo_url = await uploadToCloudinary(touristRegData.imageFile!);
 
 			const signupResponse = await submitSignup({
-				username: touristRegData.username,
+				email: touristRegData.email,
 				password: touristRegData.password,
+				user_type: 1,
 				role: 'tourist',
 			});
 
 			const createTouristResponse = await submitTouristRegistration({
-				first_name: touristRegData.firstName,
-				last_name: touristRegData.lastName,
-				email_address: touristRegData.emailAddress,
+				first_name: touristRegData.first_name,
+				last_name: touristRegData.last_name,
+				email_address: touristRegData.email,
 				gender: touristRegData.gender,
 				nationality: touristRegData.nationality,
-				birthdate: touristRegData.birthdate,
+				date_of_birth: touristRegData.date_of_birth,
 				country: touristRegData.country,
-				province: touristRegData.province,
-				city_municipality: touristRegData.municipality,
+				state_province: touristRegData.state_province,
+				city_municipality: touristRegData.city_municipality,
 				photo_url,
 				user_id: signupResponse.userId,
 			});
@@ -95,23 +96,23 @@ const Step3 = () => {
 					<p className="font-semibold mb-2">BASIC INFORMATION</p>
 					<div className="grid grid-cols-1  lg:grid-cols-2 gap-2">
 						<TextInput
-							value={touristRegData.firstName}
+							value={touristRegData.first_name}
 							isReadOnly={true}
 							label="First Name"
 						/>
 						<TextInput
-							value={touristRegData.lastName}
+							value={touristRegData.last_name}
 							isReadOnly={true}
 							label="Last Name"
 						/>
 						<TextInput
-							value={touristRegData.lastName}
+							value={touristRegData.gender}
 							isReadOnly
 							label="Gender"
 						/>
 						<TextInput
 							isReadOnly
-							value={touristRegData.lastName}
+							value={touristRegData.nationality}
 							label="Nationality"
 						/>
 					</div>
@@ -121,7 +122,7 @@ const Step3 = () => {
 					<TextInput
 						isReadOnly
 						label="Birth Date"
-						value={touristRegData.birthdate}
+						value={touristRegData.date_of_birth}
 					/>
 				</div>
 				<div className="my-8">
@@ -133,19 +134,38 @@ const Step3 = () => {
 							label="Country"
 						/>
 						<TextInput
-							value={touristRegData.province}
+							value={touristRegData.state_province}
 							isReadOnly={true}
 							label="Province"
 						/>
 						<TextInput
-							value={touristRegData.municipality}
+							value={touristRegData.city_municipality}
 							isReadOnly={true}
 							label="City/Municipality"
+						/>
+					</div>
+					<div className="grid grid-cols-1 lg:grid-cols-2 gap-2 mt-2">
+						<TextInput
+							value={touristRegData.address_1}
+							isReadOnly={true}
+							label="Address 1"
+						/>
+						<TextInput
+							value={touristRegData.address_2}
+							isReadOnly={true}
+							label="Address 2"
 						/>
 					</div>
 				</div>
 				<div className="my-8">
 					<p className="font-semibold mb-2">ACCOUNT DETAILS</p>
+					<div className="grid grid-cols-1 gap-2 mb-2">
+						<TextInput
+							value={touristRegData.contact_number}
+							isReadOnly={true}
+							label="Contact Number"
+						/>
+					</div>
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
 						<TextInput
 							value={touristRegData.username}
@@ -153,7 +173,7 @@ const Step3 = () => {
 							label="Username"
 						/>
 						<TextInput
-							value={touristRegData.emailAddress}
+							value={touristRegData.email}
 							isReadOnly={true}
 							label="Email Address"
 						/>

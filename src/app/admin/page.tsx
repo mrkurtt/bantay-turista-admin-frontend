@@ -12,4 +12,4 @@ const AdminHome = () => {
 	);
 };
 
-export default AdminHome;
+export default isAuth(AdminHome);

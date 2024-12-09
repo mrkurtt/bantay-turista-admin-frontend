@@ -4,9 +4,15 @@ import { apiErrorHandler } from '@/utils/shared';
 import { IEstablishment, ITourist, IUser } from '@/utils/interfaces';
 import Cookies from 'js-cookie';
 
+const authBaseUrl = process.env.NEXT_PUBLIC_AUTH_API_URL;
+
+export const authApi = axios.create({
+	baseURL: authBaseUrl,
+});
+
 export const signup = async (user: IUser) => {
 	try {
-		const { data } = await api.post('/auth/signup', user);
+		const { data } = await authApi.post('/auth/register', user);
 		return data;
 	} catch (error: any) {
 		return apiErrorHandler(error);
@@ -15,7 +21,7 @@ export const signup = async (user: IUser) => {
 
 export const login = async (user: IUser) => {
 	try {
-		const { data } = await api.post('/auth/login', user);
+		const { data } = await authApi.post('/auth/login', user);
 
 		Cookies.set('access_token', data.token, {
 			expires: 7,
@@ -27,7 +33,7 @@ export const login = async (user: IUser) => {
 			secure: true,
 		});
 
-		Cookies.set('user_id', data.user_id, {
+		Cookies.set('user_id', data.id.userId, {
 			expires: 7,
 			secure: true,
 		});

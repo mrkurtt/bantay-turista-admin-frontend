@@ -66,15 +66,15 @@ const Step1 = () => {
 					<div className="grid grid-cols-1  lg:grid-cols-2 gap-2">
 						<TextInput
 							label="First Name"
-							name="firstName"
+							name="first_name"
 							onChange={handleFormChange}
-							value={touristRegData.firstName}
+							value={touristRegData.first_name}
 						/>
 						<TextInput
 							label="Last Name"
-							name="lastName"
+							name="last_name"
 							onChange={handleFormChange}
-							value={touristRegData.lastName}
+							value={touristRegData.last_name}
 						/>
 						<TextInput
 							label="Gender (Male or Female)"
@@ -93,10 +93,10 @@ const Step1 = () => {
 				<div className="my-8 w-full">
 					<p className="font-semibold mb-2">DATE OF BIRTH</p>
 					<TextInput
-						label="Birthday (ex. August 16, 2002)"
-						name="birthdate"
+						label="Birthday yyyy-mm-dd (ex. 2002-08-16)"
+						name="date_of_birth"
 						onChange={handleFormChange}
-						value={touristRegData.birthdate}
+						value={touristRegData.date_of_birth}
 					/>
 				</div>
 				<div className="my-8">
@@ -110,20 +110,44 @@ const Step1 = () => {
 						/>
 						<TextInput
 							label="Province"
-							name="province"
+							name="state_province"
 							onChange={handleFormChange}
-							value={touristRegData.province}
+							value={touristRegData.state_province}
 						/>
 						<TextInput
 							label="City/Municipality"
-							name="municipality"
+							name="city_municipality"
 							onChange={handleFormChange}
-							value={touristRegData.municipality}
+							value={touristRegData.city_municipality}
+						/>
+					</div>
+
+					<div className="grid grid-cols-1 lg:grid-cols-2 gap-2 mt-2">
+						<TextInput
+							label="Address 1"
+							name="address_1"
+							onChange={handleFormChange}
+							value={touristRegData.address_1}
+						/>
+						<TextInput
+							label="Address 2"
+							name="address_2"
+							onChange={handleFormChange}
+							value={touristRegData.address_2}
 						/>
 					</div>
 				</div>
 				<div className="my-8">
 					<p className="font-semibold mb-2">ACCOUNT DETAILS</p>
+
+					<div className="grid grid-cols-1 gap-2 mb-2">
+						<TextInput
+							label="Contact Number"
+							name="contact_number"
+							onChange={handleFormChange}
+							value={touristRegData.contact_number}
+						/>
+					</div>
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
 						<TextInput
 							label="Username"
@@ -134,12 +158,12 @@ const Step1 = () => {
 						<TextInput
 							type="email"
 							label="Email Address"
-							name="emailAddress"
+							name="email"
 							onChange={handleFormChange}
-							value={touristRegData.emailAddress}
+							value={touristRegData.email}
 						/>
 						<PasswordInput
-							label="Password"
+							label="Password (must be at least 8 characters long)"
 							placeholder="Enter your password"
 							name="password"
 							onChange={handleFormChange}
