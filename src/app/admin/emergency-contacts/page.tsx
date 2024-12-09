@@ -12,4 +12,4 @@ const EmergencyContactList = () => {
 	);
 };
 
-export default isAuth(EmergencyContactList);
+export default EmergencyContactList;

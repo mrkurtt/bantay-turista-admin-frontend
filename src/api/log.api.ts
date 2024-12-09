@@ -15,8 +15,8 @@ export const createLog = async (log: ILogTest) => {
 
 export const getLogs = async () => {
 	try {
-		const { data } = await api.get(`/log`);
-
+		const { data } = await api.get(`/log/list`);
+		console.log(data.data);
 		return data;
 	} catch (error: any) {
 		return apiErrorHandler(error);

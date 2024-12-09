@@ -12,7 +12,7 @@ export const getTourist = async (userId: string | undefined) => {
 
 export const getAllTourists = async () => {
 	try {
-		const { data } = await api.get(`/tourist`);
+		const { data } = await api.get(`/tourist/list`);
 		return data;
 	} catch (error: any) {
 		return apiErrorHandler(error);

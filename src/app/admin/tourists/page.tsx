@@ -12,4 +12,4 @@ const TouristList = () => {
 	);
 };
 
-export default isAuth(TouristList);
+export default TouristList;

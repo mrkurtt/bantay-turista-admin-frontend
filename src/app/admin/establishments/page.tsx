@@ -12,4 +12,4 @@ const EstablishmentList = () => {
 	);
 };
 
-export default isAuth(EstablishmentList);
+export default EstablishmentList;

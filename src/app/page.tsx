@@ -15,4 +15,4 @@ const Home = () => {
 	);
 };
 
-export default isAuth(Home);
+export default Home;
