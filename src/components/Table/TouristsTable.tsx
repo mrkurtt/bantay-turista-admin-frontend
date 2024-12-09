@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 import BreadCrumbs from '../BreadCrumbs/BreadCrumbs';
 import { useTouristStore } from '@/stores/useTouristStore';
+import moment from 'moment';
 
 const TouristsTable = () => {
 	const { getTourists, tourists } = useTouristStore((state) => state);
@@ -54,8 +55,11 @@ const TouristsTable = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{tourists?.map((tourist) => (
-							<tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+						{tourists?.map((tourist, index) => (
+							<tr
+								key={`tourist-${index + 1}`}
+								className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
+							>
 								<th
 									scope="row"
 									className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
@@ -68,10 +72,12 @@ const TouristsTable = () => {
 								<td className="px-6 py-4">{tourist?.first_name}</td>
 								<td className="px-6 py-4">{tourist?.last_name}</td>
 								<td className="px-6 py-4">{tourist?.gender}</td>
-								<td className="px-6 py-4">{tourist?.birthdate}</td>
+								<td className="px-6 py-4">
+									{moment(tourist?.date_of_birth).format('MMMM d, YYYY')}
+								</td>
 								<td className="px-6 py-4">{tourist?.nationality}</td>
 								<td className="px-6 py-4">{tourist?.country}</td>
-								<td className="px-6 py-4">{tourist?.province}</td>
+								<td className="px-6 py-4">{tourist?.state_province}</td>
 								<td className="px-6 py-4">{tourist?.city_municipality}</td>
 							</tr>
 						))}

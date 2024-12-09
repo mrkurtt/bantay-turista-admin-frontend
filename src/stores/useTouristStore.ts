@@ -20,10 +20,8 @@ export const useTouristStore = create<TouristState & TouristActions>((set) => ({
 		const allTourists = await getAllTourists();
 
 		set(() => ({
-			tourists: allTourists.tourists,
+			tourists: allTourists.data,
 		}));
-
-		console.log(allTourists);
 
 		return allTourists;
 	},

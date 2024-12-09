@@ -13,10 +13,23 @@ export interface IUser {
 	role?: 'tourist' | 'establishment' | 'admin';
 }
 
+interface LogTouristDetails {
+	id: number;
+	name: string;
+}
+
+interface LogEstablishmentDetails {
+	id: number;
+	name: string;
+}
+
 export interface ILog {
 	tourist_id?: ITourist;
 	establishment_id?: IEstablishment;
-	createdAt?: string;
+	qr_code?: string;
+	created_at?: string;
+	tourist?: LogTouristDetails;
+	establishment?: LogEstablishmentDetails;
 }
 
 export interface ITourist {
@@ -26,9 +39,9 @@ export interface ITourist {
 	email_address: string;
 	gender: string;
 	nationality: string;
-	birthdate: string;
+	date_of_birth: string;
 	country: string;
-	province: string;
+	state_province: string;
 	city_municipality: string;
 	photo_url: string;
 	user_id: string;
@@ -37,7 +50,7 @@ export interface ITourist {
 
 export interface IEstablishment {
 	_id?: string;
-	establishment_name: string;
+	name: string;
 	establishment_type: string;
 	city_municipality: string;
 	barangay: string;
@@ -46,13 +59,22 @@ export interface IEstablishment {
 	email_address: string;
 	photo_url: string;
 	user_id: string;
+	owner_name: string;
+	owner_email: string;
+	owner_phone: string;
+}
+
+interface ComplaintTouristDetails {
+	first_name: string;
+	last_name: string;
 }
 
 export interface IComplaint {
 	userId?: string;
 	description?: string;
-	tourist_id?: ITourist;
+	tourist?: ComplaintTouristDetails;
 	resolved?: boolean;
+	created_at?: string;
 }
 
 export interface IGradientBtnProps {

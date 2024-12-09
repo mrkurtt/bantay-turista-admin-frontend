@@ -26,7 +26,7 @@ export const useLogStore = create<LogState & LogActions>((set) => ({
 		const getLogsResponse = await getLogs();
 
 		set(() => ({
-			logs: getLogsResponse.logs,
+			logs: getLogsResponse.data,
 		}));
 
 		return getLogsResponse;
