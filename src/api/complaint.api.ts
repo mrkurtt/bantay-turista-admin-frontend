@@ -5,7 +5,7 @@ import { apiErrorHandler } from '@/utils/shared';
 export const createComplaint = async (complaint: IComplaint) => {
 	try {
 		const { data } = await api.post(
-			`/complaint/${complaint.userId}`,
+			`/complaints/${complaint.userId}/create`,
 			complaint
 		);
 

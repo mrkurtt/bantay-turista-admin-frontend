@@ -8,9 +8,8 @@ import TextInput from '@/components/Input/TextInput';
 import FormStepper from '@/components/Stepper/FormStepper';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import CustomDatePicker from '@/components/Dropdown/CustomDatePicker';
 import { useAuthStore } from '@/stores/useAuthStore';
-import toast from 'react-hot-toast';
+import { api } from '@/api/axios';
 
 const Step1 = () => {
 	const { establishmentRegData, updateERegData } = useAuthStore(
@@ -54,9 +53,19 @@ const Step1 = () => {
 		}
 	};
 
+	const [estypes, setEstypes] = useState<Object[]>([]);
+
+	const getTypes = async () => {
+		const res = await api.get('/establishment-type');
+		setEstypes(res.data.data);
+	};
+
+	useEffect(() => {
+		getTypes();
+	}, []);
+
 	useEffect(() => {
 		checkPassword();
-		console.log(match);
 	}, [establishmentRegData.confirmPassword]);
 
 	return (
@@ -76,17 +85,58 @@ const Step1 = () => {
 							onChange={handleFormChange}
 							value={establishmentRegData.establishmentName}
 						/>
+
+						<div className="w-full">
+							<select
+								title="selecttype"
+								value={establishmentRegData.type}
+								onChange={(e) => updateERegData('type', e.target.value)}
+								id="options"
+								className="w-full p-2 py-4 border-2 border-gray-200 rounded-xl text-sm"
+							>
+								<option value={''}>Establishment Type</option>
+								{estypes.map((estype: any) => (
+									<option value={estype.id}>{estype.name}</option>
+								))}
+							</select>
+						</div>
+					</div>
+				</div>
+				<div className="my-8">
+					<p className="font-semibold mb-2">OWNER DETAILS</p>
+					<div className="grid grid-cols-1  lg:grid-cols-2 gap-2">
 						<TextInput
-							label="Establishment Type"
-							name="establishmentType"
+							label="Owner Name"
+							name="owner_name"
 							onChange={handleFormChange}
-							value={establishmentRegData.establishmentType}
+							value={establishmentRegData.owner_name}
+						/>
+
+						<TextInput
+							label="Owner Email"
+							name="owner_email"
+							onChange={handleFormChange}
+							value={establishmentRegData.owner_email}
+						/>
+					</div>
+					<div className="grid grid-cols-1 mt-2">
+						<TextInput
+							label="Owner Phone Number"
+							name="owner_phone"
+							onChange={handleFormChange}
+							value={establishmentRegData.owner_phone}
 						/>
 					</div>
 				</div>
 				<div className="my-8">
 					<p className="font-semibold mb-2">LOCATION</p>
 					<div className="grid grid-cols-1  lg:grid-cols-2 gap-2">
+						<TextInput
+							label="Address 1"
+							name="address_1"
+							onChange={handleFormChange}
+							value={establishmentRegData.address_1}
+						/>
 						<TextInput
 							label="Barangay"
 							name="barangay"
@@ -99,14 +149,6 @@ const Step1 = () => {
 							name="cityMunicipality"
 							onChange={handleFormChange}
 							value={establishmentRegData.cityMunicipality}
-						/>
-					</div>
-					<div className="grid grid-cols-1 mt-2">
-						<TextInput
-							label="Complete Address"
-							name="completeAddress"
-							onChange={handleFormChange}
-							value={establishmentRegData.completeAddress}
 						/>
 					</div>
 				</div>
@@ -123,12 +165,6 @@ const Step1 = () => {
 				<div className="my-8">
 					<p className="font-semibold mb-2">ACCOUNT DETAILS</p>
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-						<TextInput
-							label="Username"
-							name="username"
-							onChange={handleFormChange}
-							value={establishmentRegData.username}
-						/>
 						<TextInput
 							type="email"
 							label="Email Address"

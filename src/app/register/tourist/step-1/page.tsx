@@ -9,6 +9,7 @@ import FormStepper from '@/components/Stepper/FormStepper';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { useAuthStore } from '@/stores/useAuthStore';
+import CustomDatePicker from '@/components/Dropdown/CustomDatePicker';
 
 const Step1 = () => {
 	const { touristRegData, updateTRegData } = useAuthStore((state) => state);
@@ -76,12 +77,20 @@ const Step1 = () => {
 							onChange={handleFormChange}
 							value={touristRegData.last_name}
 						/>
-						<TextInput
-							label="Gender (Male or Female)"
-							name="gender"
-							onChange={handleFormChange}
-							value={touristRegData.gender}
-						/>
+						<div className="w-full">
+							<select
+								title="selecttype"
+								value={touristRegData.gender}
+								onChange={(e) => updateTRegData('gender', e.target.value)}
+								id="options"
+								className="w-full p-2 py-4 border-2 border-gray-200 rounded-xl text-sm"
+							>
+								<option value={''}>Gender</option>
+								{['Male', 'Female', 'Prefer not to say'].map((estype: any) => (
+									<option value={estype}>{estype}</option>
+								))}
+							</select>
+						</div>
 						<TextInput
 							label="Nationality"
 							name="nationality"
@@ -92,11 +101,14 @@ const Step1 = () => {
 				</div>
 				<div className="my-8 w-full">
 					<p className="font-semibold mb-2">DATE OF BIRTH</p>
-					<TextInput
-						label="Birthday yyyy-mm-dd (ex. 2002-08-16)"
-						name="date_of_birth"
-						onChange={handleFormChange}
+					<input
+						className="w-full p-2 py-4 border-2 border-gray-200 rounded-xl text-sm"
+						title="birthdate"
+						type="date"
+						onChange={(e) => updateTRegData('date_of_birth', e.target.value)}
+						id="birthday"
 						value={touristRegData.date_of_birth}
+						name="birthday"
 					/>
 				</div>
 				<div className="my-8">
@@ -149,12 +161,6 @@ const Step1 = () => {
 						/>
 					</div>
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-						<TextInput
-							label="Username"
-							name="username"
-							onChange={handleFormChange}
-							value={touristRegData.username}
-						/>
 						<TextInput
 							type="email"
 							label="Email Address"

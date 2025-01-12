@@ -18,6 +18,13 @@ const LoginForm = () => {
 
 	const { loginLoading, submitLogin } = useAuthStore((state) => state);
 
+	const handleLogin = async () => {
+		await submitLogin({ email, password }).then((res) => {
+			if (res.status) {
+				router.push(`/${res.role}`);
+			}
+		});
+	};
 	return (
 		<div className="w-full max-w-[500px] bg-white p-4 rounded-md">
 			<h1 className="text-center text-2xl mb-4 font-semibold text-primary">
@@ -56,14 +63,7 @@ const LoginForm = () => {
 				label="Login"
 				fullWidth={true}
 				isLoading={loginLoading}
-				onClickHandler={async () =>
-					await submitLogin({ email, password, user_type: 3 }).then((res) => {
-						// console.log(res);
-						if (res.status) {
-							router.push(`/${res.role}`);
-						}
-					})
-				}
+				onClickHandler={handleLogin}
 			/>
 		</div>
 	);

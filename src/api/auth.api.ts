@@ -10,7 +10,7 @@ export const authApi = axios.create({
 	baseURL: authBaseUrl,
 });
 
-export const signup = async (user: IUser) => {
+export const signup = async (user: Object) => {
 	try {
 		const { data } = await authApi.post('/auth/register', user);
 		return data;
@@ -37,6 +37,20 @@ export const login = async (user: IUser) => {
 			expires: 7,
 			secure: true,
 		});
+
+		if (data.role === 'tourist') {
+			Cookies.set('tourist_id', data.id.touristId, {
+				expires: 7,
+				secure: true,
+			});
+		}
+
+		if (data.role === 'establishment') {
+			Cookies.set('establishment_id', data.id.establishmentId, {
+				expires: 7,
+				secure: true,
+			});
+		}
 
 		return data;
 	} catch (error) {

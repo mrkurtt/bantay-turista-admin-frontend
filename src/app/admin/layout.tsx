@@ -14,7 +14,7 @@ export default function Layout({
 	return (
 		<div>
 			<AdminNav />
-			<div className="p-4 sm:ml-64 bg-gray-100 h-screen">
+			<div className="p-4 sm:ml-64 bg-gray-100">
 				<div className="p-4 border-2 border-gray-200 bg-white border-dashed rounded-lg mt-14">
 					{children}
 				</div>

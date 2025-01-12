@@ -76,7 +76,8 @@ export const useAuthStore = create<AuthState & AuthActions>((set) => ({
 		establishmentType: '',
 		cityMunicipality: '',
 		barangay: '',
-		completeAddress: '',
+
+		address_1: '',
 		contactNumber: '',
 		image: undefined,
 		imageFile: undefined,
@@ -85,6 +86,10 @@ export const useAuthStore = create<AuthState & AuthActions>((set) => ({
 		username: '',
 		password: '',
 		confirmPassword: '',
+		owner_email: '',
+		owner_name: '',
+		owner_phone: '',
+		type: 0,
 	},
 
 	loginLoading: false,
@@ -112,6 +117,8 @@ export const useAuthStore = create<AuthState & AuthActions>((set) => ({
 		Cookies.remove('access_token');
 		Cookies.remove('user_id');
 		Cookies.remove('role');
+		Cookies.remove('tourist_id');
+		Cookies.remove('establishment_id');
 	},
 
 	submitLogin: async (user: IUser) => {

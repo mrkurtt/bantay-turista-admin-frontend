@@ -12,25 +12,11 @@ import Cookies from 'js-cookie';
 import { useAuthStore } from '@/stores/useAuthStore';
 import { useRouter } from 'next/navigation';
 import isAuth from '@/components/isAuth';
+import { getTourist, updateTourist } from '@/api/tourist.api';
+import toast from 'react-hot-toast';
 
 const UpdateProfile = () => {
 	const router = useRouter();
-
-	const [updateData, setUpdateData] = useState({});
-	const [tourist, setTourist] = useState({
-		first_name: '',
-		last_name: '',
-		email_address: '',
-		gender: '',
-		nationality: '',
-		birthdate: '',
-		country: '',
-		province: '',
-		city_municipality: '',
-		photo_url: '',
-		user_id: '',
-		qr_code: '',
-	});
 
 	const { getTouristDetails, touristDetails, updateTouristDetails, isLoading } =
 		useTouristStore((state) => state);
@@ -50,37 +36,39 @@ const UpdateProfile = () => {
 			});
 		}
 
-		const updateTouristResponse = await updateTouristDetails(
-			`${Cookies.get('user_id')}`,
+		const updateTouristResponse = await updateTourist(
+			`${Cookies.get('tourist_id')}`,
 			data
 		);
 
-		if (updateTouristResponse.success) {
+		// const updateTouristResponse = await updateTouristDetails(
+		// 	`${Cookies.get('user_id')}`,
+		// 	data
+		// );
+
+		if (updateTouristResponse.status) {
+			toast.success('Tourist updated successfully');
 			router.push('/tourist');
+		} else {
+			toast.error('Tourist update failed');
 		}
 	};
 
-	useEffect(() => {
-		setTourist({
-			...tourist,
-			first_name: `${touristDetails?.first_name}`,
-			last_name: `${touristDetails?.last_name}`,
-			email_address: `${touristDetails?.email_address}`,
-			gender: `${touristDetails?.gender}`,
-			nationality: `${touristDetails?.nationality}`,
-			birthdate: `${touristDetails?.birthdate}`,
-			country: `${touristDetails?.country}`,
-			province: `${touristDetails?.province}`,
-			city_municipality: `${touristDetails?.city_municipality}`,
-			photo_url: `${touristDetails?.photo_url}`,
-			user_id: `${touristDetails?.user_id}`,
-			qr_code: `${touristDetails?.qr_code}`,
-		});
-	}, [touristDetails]);
+	const [tourist, setTourist] = useState<any>({});
+	const [updateData, setUpdateData] = useState({});
+
+	const getTouristInfo = async () => {
+		const res = await getTourist(Cookies.get('tourist_id'));
+		setTourist(res.data);
+	};
 
 	useEffect(() => {
-		getTouristDetails(Cookies.get('user_id'));
+		getTouristInfo();
 	}, []);
+
+	useEffect(() => {
+		console.log(updateData);
+	}, [updateData]);
 
 	return (
 		<Container>
@@ -89,7 +77,7 @@ const UpdateProfile = () => {
 				<p>Please provide proper information below. </p>
 			</div>
 			<FormContainer>
-				<URLBasedImage imageUrl={`${touristDetails?.photo_url}`} />
+				<URLBasedImage imageUrl={`${tourist?.photo_url}`} />
 				<div className="my-8">
 					<label
 						className="block mb-2 text-sm text-gray-900 dark:text-white"
@@ -179,24 +167,53 @@ const UpdateProfile = () => {
 				</div>
 				<div className="my-8 w-full">
 					<p className="font-semibold mb-2">DATE OF BIRTH</p>
-					<TextInput
-						onChange={(e) => {
+
+					<input
+						className="w-full p-2 py-4 border-2 border-gray-200 rounded-xl text-sm"
+						title="birthdate"
+						type="date"
+						onChange={(e) =>
 							setUpdateData({
 								...updateData,
-								birthdate: e.target.value,
-							});
-							setTourist({
-								...tourist,
-								birthdate: e.target.value,
-							});
-						}}
-						value={tourist?.birthdate}
-						label="Birthdate (ex. August 12, 2002)"
+								date_of_birth: e.target.value,
+							})
+						}
+						id="birthday"
+						placeholder={tourist?.date_of_birth}
+						name="birthday"
 					/>
 				</div>
 				<div className="my-8">
 					<p className="font-semibold mb-2">PERMANENT ADDRESS</p>
 					<div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
+						<TextInput
+							onChange={(e) => {
+								setUpdateData({
+									...updateData,
+									address_1: e.target.value,
+								});
+								setTourist({
+									...tourist,
+									address_1: e.target.value,
+								});
+							}}
+							value={tourist?.address_1}
+							label="Address 1"
+						/>
+						<TextInput
+							onChange={(e) => {
+								setUpdateData({
+									...updateData,
+									address_2: e.target.value,
+								});
+								setTourist({
+									...tourist,
+									address_2: e.target.value,
+								});
+							}}
+							value={tourist?.address_2}
+							label="Address 2"
+						/>
 						<TextInput
 							onChange={(e) => {
 								setUpdateData({
@@ -215,14 +232,14 @@ const UpdateProfile = () => {
 							onChange={(e) => {
 								setUpdateData({
 									...updateData,
-									province: e.target.value,
+									state_province: e.target.value,
 								});
 								setTourist({
 									...tourist,
-									province: e.target.value,
+									state_province: e.target.value,
 								});
 							}}
-							value={tourist?.province}
+							value={tourist?.state_province}
 							label="Province"
 						/>
 						<TextInput

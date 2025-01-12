@@ -8,20 +8,15 @@ import FormStepper from '@/components/Stepper/FormStepper';
 import React, { useEffect, useState } from 'react';
 import PlainBtn from '@/components/Button/PlainBtn';
 import TextInput from '@/components/Input/TextInput';
-import CustomDatePicker from '@/components/Dropdown/CustomDatePicker';
 import Link from 'next/link';
 import { useAuthStore } from '@/stores/useAuthStore';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+import { signup } from '@/api/auth.api';
 
 const Step3 = () => {
-	const {
-		touristRegData,
-		uploadToCloudinary,
-		submitSignup,
-		submitTouristRegistration,
-		touristRegLoading,
-	} = useAuthStore((state) => state);
+	const { touristRegData, uploadToCloudinary, touristRegLoading } =
+		useAuthStore((state) => state);
 
 	const router = useRouter();
 
@@ -51,14 +46,9 @@ const Step3 = () => {
 		} else {
 			const photo_url = await uploadToCloudinary(touristRegData.imageFile!);
 
-			const signupResponse = await submitSignup({
+			const createTouristResponse = await signup({
 				email: touristRegData.email,
 				password: touristRegData.password,
-				user_type: 1,
-				role: 'tourist',
-			});
-
-			const createTouristResponse = await submitTouristRegistration({
 				first_name: touristRegData.first_name,
 				last_name: touristRegData.last_name,
 				email_address: touristRegData.email,
@@ -68,13 +58,18 @@ const Step3 = () => {
 				country: touristRegData.country,
 				state_province: touristRegData.state_province,
 				city_municipality: touristRegData.city_municipality,
+				address_1: touristRegData.address_1,
+				address_2: touristRegData.address_2,
+				contact_number: touristRegData.contact_number,
 				photo_url,
-				user_id: signupResponse.userId,
+				user_type: 1,
 			});
 
-			if (createTouristResponse.success) {
+			if (createTouristResponse.status) {
+				toast.success('Tourist registered successfully');
 				router.push('/');
-				toast.success('Please login.');
+			} else {
+				toast.error('Tourist registration failed');
 			}
 		}
 	};
@@ -167,11 +162,6 @@ const Step3 = () => {
 						/>
 					</div>
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-						<TextInput
-							value={touristRegData.username}
-							isReadOnly={true}
-							label="Username"
-						/>
 						<TextInput
 							value={touristRegData.email}
 							isReadOnly={true}

@@ -14,6 +14,7 @@ import React, { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import { dateParser } from '@/utils/helper';
 import isAuth from '@/components/isAuth';
+import { getTourist } from '@/api/tourist.api';
 
 const TouristHome = () => {
 	const { Canvas, Image } = useQRCode();
@@ -39,8 +40,15 @@ const TouristHome = () => {
 		}
 	};
 
+	const [tourist, setTourist] = useState<any>({});
+
+	const getTouristInfo = async () => {
+		const res = await getTourist(Cookies.get('tourist_id'));
+		setTourist(res.data);
+	};
+
 	useEffect(() => {
-		getTouristDetails(Cookies.get('user_id'));
+		getTouristInfo();
 	}, []);
 
 	return (
@@ -50,12 +58,12 @@ const TouristHome = () => {
 			<FormContainer>
 				<div className="flex justify-between items-start">
 					<div>
-						<URLBasedImage imageUrl={`${touristDetails?.photo_url}`} />
+						<URLBasedImage imageUrl={`${tourist?.photo_url}`} />
 					</div>
 					<div className="flex flex-col items-center justify-center gap-y-2">
 						<div className="border p-4 rounded-sm">
 							<Image
-								text={`${touristDetails?.qr_code}`}
+								text={`${tourist?.qr_code}`}
 								options={{
 									type: 'image/png',
 									quality: 0.3,
@@ -70,29 +78,29 @@ const TouristHome = () => {
 								}}
 							/>
 						</div>
-						<p className="font-semibold text-primary">{`${touristDetails?.qr_code}`}</p>
+						<p className="font-semibold text-primary">{`${tourist?.qr_code}`}</p>
 					</div>
 				</div>
 				<div className="my-8">
 					<p className="font-semibold mb-2">BASIC INFORMATION</p>
 					<div className="grid grid-cols-1  lg:grid-cols-2 gap-2">
 						<TextInput
-							value={touristDetails?.first_name}
+							value={tourist?.first_name}
 							isReadOnly={true}
 							label="First Name"
 						/>
 						<TextInput
-							value={touristDetails?.last_name}
+							value={tourist?.last_name}
 							isReadOnly={true}
 							label="Last Name"
 						/>
 						<TextInput
-							value={touristDetails?.gender}
+							value={tourist?.gender}
 							isReadOnly={true}
 							label="Gender"
 						/>
 						<TextInput
-							value={touristDetails?.nationality}
+							value={tourist?.nationality}
 							isReadOnly={true}
 							label="Nationality"
 						/>
@@ -101,7 +109,7 @@ const TouristHome = () => {
 				<div className="my-8 w-full">
 					<p className="font-semibold mb-2">DATE OF BIRTH</p>
 					<TextInput
-						value={touristDetails?.birthdate}
+						value={tourist?.date_of_birth}
 						isReadOnly={true}
 						label="Birth Day"
 					/>
@@ -110,17 +118,27 @@ const TouristHome = () => {
 					<p className="font-semibold mb-2">PERMANENT ADDRESS</p>
 					<div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
 						<TextInput
-							value={touristDetails?.country}
+							value={tourist?.address_1}
+							isReadOnly={true}
+							label="Address 1"
+						/>
+						<TextInput
+							value={tourist?.address_2}
+							isReadOnly={true}
+							label="Address 2"
+						/>
+						<TextInput
+							value={tourist?.country}
 							isReadOnly={true}
 							label="Country"
 						/>
 						<TextInput
-							value={touristDetails?.province}
+							value={tourist?.state_province}
 							isReadOnly={true}
 							label="Province"
 						/>
 						<TextInput
-							value={touristDetails?.city_municipality}
+							value={tourist?.city_municipality}
 							isReadOnly={true}
 							label="City/Municipality"
 						/>

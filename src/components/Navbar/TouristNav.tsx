@@ -47,9 +47,6 @@ const TouristNav = () => {
 						>
 							Virtual Assistance
 						</Link>
-						<Link href="/tourist/complaints" className="text-gray-600 text-sm">
-							Complaints
-						</Link>
 						<Link
 							href="/tourist/privacy-policy"
 							className="text-gray-600 text-sm"

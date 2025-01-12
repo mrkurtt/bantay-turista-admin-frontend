@@ -1,9 +1,9 @@
 import { api } from './axios';
 import { apiErrorHandler } from '@/utils/shared';
 
-export const getTourist = async (userId: string | undefined) => {
+export const getTourist = async (id: string | undefined) => {
 	try {
-		const { data } = await api.get(`/tourist/${userId}`);
+		const { data } = await api.get(`/tourist/${id}/profile`);
 		return data;
 	} catch (error: any) {
 		return apiErrorHandler(error);
@@ -19,9 +19,9 @@ export const getAllTourists = async () => {
 	}
 };
 
-export const updateTourist = async (userId: string, updateData: Object) => {
+export const updateTourist = async (id: string, updateData: Object) => {
 	try {
-		const { data } = await api.put(`/tourist/${userId}`, updateData);
+		const { data } = await api.put(`/tourist/${id}/profile/update`, updateData);
 		return data;
 	} catch (error: any) {
 		return apiErrorHandler(error);

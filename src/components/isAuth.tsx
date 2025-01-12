@@ -9,8 +9,6 @@ const isAuth = (WrappedComponent: React.ComponentType<any>) => {
 		const router = useRouter();
 		const pathname = usePathname();
 
-		console.log(pathname.split('/'));
-
 		let isAuthenticated = false;
 		const token = Cookies.get('access_token');
 		const role = Cookies.get('role');

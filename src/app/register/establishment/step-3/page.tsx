@@ -8,20 +8,16 @@ import FormStepper from '@/components/Stepper/FormStepper';
 import React, { useEffect, useState } from 'react';
 import PlainBtn from '@/components/Button/PlainBtn';
 import TextInput from '@/components/Input/TextInput';
-import CustomDatePicker from '@/components/Dropdown/CustomDatePicker';
 import Link from 'next/link';
 import { useAuthStore } from '@/stores/useAuthStore';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+import { signup } from '@/api/auth.api';
+import { api } from '@/api/axios';
 
 const Step3 = () => {
-	const {
-		establishmentRegData,
-		uploadToCloudinary,
-		submitSignup,
-		submitEstablishmentRegistration,
-		establishmentRegLoading,
-	} = useAuthStore((state) => state);
+	const { establishmentRegData, uploadToCloudinary, establishmentRegLoading } =
+		useAuthStore((state) => state);
 
 	const router = useRouter();
 
@@ -55,32 +51,41 @@ const Step3 = () => {
 				establishmentRegData.imageFile!
 			);
 
-			const signupResponse = await submitSignup({
-				username: establishmentRegData.username,
+			const createEstablishmentResponse = await signup({
+				name: establishmentRegData.establishmentName,
+				type_id: establishmentRegData.type,
+				city_municipality: establishmentRegData.cityMunicipality,
+				barangay: establishmentRegData.barangay,
+				address_1: establishmentRegData.address_1,
+				contact_number: establishmentRegData.contactNumber,
+				email: establishmentRegData.emailAddress,
 				password: establishmentRegData.password,
-				role: 'establishment',
+				photo_url: photo_url,
+				owner_name: establishmentRegData.owner_name,
+				owner_email: establishmentRegData.owner_email,
+				owner_phone: establishmentRegData.owner_phone,
+				user_type: 2,
 			});
 
-			const createEstablishmentResponse = await submitEstablishmentRegistration(
-				{
-					establishment_name: establishmentRegData.establishmentName,
-					establishment_type: establishmentRegData.establishmentType,
-					city_municipality: establishmentRegData.cityMunicipality,
-					barangay: establishmentRegData.barangay,
-					complete_address: establishmentRegData.completeAddress,
-					contact_number: establishmentRegData.contactNumber,
-					email_address: establishmentRegData.emailAddress,
-					photo_url: photo_url,
-					user_id: signupResponse.userId,
-				}
-			);
-
-			if (createEstablishmentResponse.success) {
+			if (createEstablishmentResponse.status) {
+				toast.success('Establishment registered successfully');
 				router.push('/');
-				toast.success('Please login.');
+			} else {
+				toast.error('Establishment registration failed');
 			}
 		}
 	};
+
+	const [estypes, setEstypes] = useState<Object[]>([]);
+
+	const getTypes = async () => {
+		const res = await api.get('/establishment-type');
+		setEstypes(res.data.data);
+	};
+
+	useEffect(() => {
+		getTypes();
+	}, []);
 
 	return (
 		<Container>
@@ -108,17 +113,57 @@ const Step3 = () => {
 							isReadOnly
 							value={establishmentRegData.establishmentName}
 						/>
+						<div className="w-full">
+							<select
+								title="selecttype"
+								value={establishmentRegData.type}
+								id="options"
+								disabled
+								className="w-full p-2 border-2 border-gray-200 rounded-lg text-sm"
+							>
+								<option value={''}>Establishment Type</option>
+								{estypes.map((estype: any) => (
+									<option value={estype.id}>{estype.name}</option>
+								))}
+							</select>
+						</div>
+					</div>
+				</div>
+				<div className="my-8">
+					<p className="font-semibold mb-2">OWNER DETAILS</p>
+					<div className="grid grid-cols-1  lg:grid-cols-2 gap-2">
 						<TextInput
-							label="Establishment Type"
-							name="establishmentType"
+							label="Owner Name"
+							name="owner_name"
 							isReadOnly
-							value={establishmentRegData.establishmentType}
+							value={establishmentRegData.owner_name}
+						/>
+						<TextInput
+							label="Owner Email"
+							name="owner_email"
+							isReadOnly
+							value={establishmentRegData.owner_email}
+						/>
+
+						<TextInput
+							label="Owner Phone Number"
+							name="owner_phone"
+							isReadOnly
+							value={establishmentRegData.owner_phone}
 						/>
 					</div>
 				</div>
 				<div className="my-8">
 					<p className="font-semibold mb-2">LOCATION</p>
 					<div className="grid grid-cols-1  lg:grid-cols-2 gap-2">
+						<div className="grid grid-cols-1 mt-2">
+							<TextInput
+								label="Address 1"
+								name="address_1"
+								isReadOnly
+								value={establishmentRegData.address_1}
+							/>
+						</div>
 						<TextInput
 							label="Barangay"
 							name="barangay"
@@ -131,14 +176,6 @@ const Step3 = () => {
 							name="cityMunicipality"
 							isReadOnly
 							value={establishmentRegData.cityMunicipality}
-						/>
-					</div>
-					<div className="grid grid-cols-1 mt-2">
-						<TextInput
-							label="Complete Address"
-							name="completeAddress"
-							isReadOnly
-							value={establishmentRegData.completeAddress}
 						/>
 					</div>
 				</div>
@@ -155,12 +192,6 @@ const Step3 = () => {
 				<div className="my-8">
 					<p className="font-semibold mb-2">ACCOUNT DETAILS</p>
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-						<TextInput
-							label="Username"
-							name="username"
-							isReadOnly
-							value={establishmentRegData.username}
-						/>
 						<TextInput
 							type="email"
 							label="Email Address"

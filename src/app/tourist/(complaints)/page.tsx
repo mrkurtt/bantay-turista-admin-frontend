@@ -51,4 +51,4 @@ const Complaints = () => {
 	);
 };
 
-export default isAuth(Complaints);
+export default Complaints;

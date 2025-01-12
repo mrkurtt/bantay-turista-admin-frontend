@@ -193,13 +193,17 @@ export interface EstablishmentRegData {
 	establishmentType: string;
 	cityMunicipality: string;
 	barangay: string;
-	completeAddress: string;
 	contactNumber: string;
 	emailAddress: string;
+	address_1: string;
 	username: string;
 	password: string;
 	image: string | undefined;
 	imageFile: File | undefined;
 	confirmPassword: string;
 	photoUrl: string;
+	owner_name: string;
+	owner_email: string;
+	owner_phone: string;
+	type: number | undefined;
 }
