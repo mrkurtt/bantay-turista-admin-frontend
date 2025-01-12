@@ -191,7 +191,7 @@ const UpdateProfile = () => {
 					<p className="font-semibold mb-2">LOCATION</p>
 					<div className="grid grid-cols-1 mt-2 mb-2">
 						<TextInput
-							value={`${establishment?.complete_address}`}
+							value={`${establishment?.address_1}`}
 							label="Address 1"
 							onChange={(e) => {
 								setUpdateData({
